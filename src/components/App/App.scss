@@ -1,3 +1,12 @@
-.App {
-  text-align: center;
+.wrapper {
+  background-color: var(--primary-black);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 100px 100px 0 100px;
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
 }

@@ -1,0 +1,73 @@
+@import '../../../scss/breakpoints.scss';
+
+.card {
+  position: relative;
+  font-family: Cormorant, sans-serif;
+  overflow: hidden;
+  cursor: pointer;
+
+  :hover {
+    scale: 1.1;
+    transition: scale 0.5s;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    transition: scale 0.5s;
+  }
+  &__description {
+    pointer-events: none;
+    width: 76%;
+    height: 25%;
+    bottom: 0;
+    position: absolute;
+    background-color: var(--primary-black);
+    color: var(--primary-light-gray);
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    :before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 50%;
+      width: 2px;
+      background-color: var(--accent-gold);
+      justify-self: center;
+    }
+
+    &_title, &_name {
+      font-size: 16px;
+      line-height: 19px;
+      font-weight: 500;
+      color: var(--primary-light-gray);
+    }
+    &_year {
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-size: 12px ;
+      line-height: 15px;
+      color: var(--accent-gold);
+    }
+  }
+
+  &__arrow {
+    display: none;
+    width: 24px;
+    right: -24px;
+    position: absolute;
+    height: 100%;
+    background-color: var(--accent-gold);
+    justify-content: center;
+    align-items: center;
+    @media (max-width: $breakpoint-tablet) {
+      display: flex;
+    }
+  }
+}
