@@ -1,4 +1,4 @@
-@import '../../../scss/breakpoints.scss';
+@import '../../scss/breakpoints';
 
 .card {
   position: relative;
@@ -20,7 +20,7 @@
   &__description {
     pointer-events: none;
     width: 76%;
-    height: 25%;
+    height: auto;
     bottom: 0;
     position: absolute;
     background-color: var(--primary-black);
@@ -58,7 +58,7 @@
   }
 
   &__arrow {
-    display: none;
+    display: flex;
     width: 24px;
     right: -24px;
     position: absolute;
@@ -66,8 +66,8 @@
     background-color: var(--accent-gold);
     justify-content: center;
     align-items: center;
-    @media (max-width: $breakpoint-tablet) {
-      display: flex;
+    @media (min-width: $breakpoint-s-desktop) {
+      display: none;
     }
   }
 }

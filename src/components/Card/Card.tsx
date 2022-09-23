@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { ICard } from '../../../types/types';
-import { ReactComponent as Arrow } from '../../../images/svg/arrow.svg';
+import { ICard } from '../../types/types';
+import { ReactComponent as Arrow } from '../../images/svg/arrow.svg';
 import './cardStyle.scss';
 
 interface CardProps {

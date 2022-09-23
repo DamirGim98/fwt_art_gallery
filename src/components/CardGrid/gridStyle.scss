@@ -1,0 +1,32 @@
+@import '../../scss/breakpoints.scss';
+
+.wrapper {
+  background-color: var(--primary-black);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 80px 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: 100px 20px;
+    &__container {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  }
+  @media (min-width: $breakpoint-s-desktop) {
+    padding: 100px;
+    &__container {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+  }
+}

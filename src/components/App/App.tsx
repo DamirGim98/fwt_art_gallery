@@ -1,22 +1,37 @@
 import React from 'react';
 import './App.scss';
-import Card from '../UI/Card/Card';
+import CardGrid from '../CardGrid';
 
 function App() {
+  const cards = [
+    {
+      id: 1,
+      name: 'Ivan Ivanov',
+      imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
+      year: '1998-1999',
+    },
+    {
+      id: 2,
+      name: 'Ivan Ivanov',
+      imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
+      year: '1998-1999',
+    },
+    {
+      id: 3,
+      name: 'Anton Anton ',
+      imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
+      year: '1998-1999',
+    },
+    {
+      id: 4,
+      name: 'Sergey Sergeev',
+      imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
+      year: '1998-1999',
+    },
+  ];
   return (
     <div className="App">
-      <div className="wrapper">
-        <div className="wrapper__container">
-          <Card
-            card={{
-              name: 'Ivan Ivanov Ivanov',
-              imgUrl:
-                'https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkELnCDvFGkCJdKZV1JBlecaaKTM5SRkZCeTgDn6uOyic',
-              year: '1998 - 1999',
-            }}
-          />
-        </div>
-      </div>
+      <CardGrid cards={cards} />
     </div>
   );
 }
