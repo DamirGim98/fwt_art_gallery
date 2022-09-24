@@ -2,12 +2,12 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import CardGrid from '../components/CardGrid';
 
 export default {
-  title: 'Grid',
+  title: 'Components/Grid',
   component: CardGrid,
 } as ComponentMeta<typeof CardGrid>;
 
 export const Default: ComponentStory<typeof CardGrid> = ({ ...args }) => {
-  return <CardGrid {...args} cards={args.cards} />;
+  return <CardGrid {...args} cards={args.cards} DarkTheme={args.DarkTheme} />;
 };
 
 Default.args = {
@@ -34,4 +34,5 @@ Default.args = {
       year: '1998 - 2000',
     },
   ],
+  DarkTheme: true,
 };

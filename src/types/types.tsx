@@ -1,8 +1,8 @@
 export interface ICard {
-  title?: string;
-  name: string;
-  imgUrl: string;
   id?: number;
+  name: string;
+  title?: string;
   year: string;
+  imgUrl: string;
   OnClick?: () => void;
 }

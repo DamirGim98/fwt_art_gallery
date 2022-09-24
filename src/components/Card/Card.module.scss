@@ -5,10 +5,12 @@
   font-family: Cormorant, sans-serif;
   overflow: hidden;
   cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.5s;
 
   :hover {
     scale: 1.1;
-    transition: scale 0.5s;
+    transition: scale ease-out 0.5s;
   }
 
   &__img {
@@ -19,18 +21,17 @@
   }
   &__description {
     pointer-events: none;
-    width: 76%;
+    width: 77%;
     height: auto;
     bottom: 0;
     position: absolute;
     background-color: var(--primary-black);
     color: var(--primary-light-gray);
-    text-transform: uppercase;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 20px;
-    :before {
+    &::before {
       content: '';
       position: absolute;
       left: 0;
@@ -46,7 +47,6 @@
       font-size: 16px;
       line-height: 19px;
       font-weight: 500;
-      color: var(--primary-light-gray);
     }
     &_year {
       font-family: Inter, sans-serif;
@@ -69,5 +69,21 @@
     @media (min-width: $breakpoint-s-desktop) {
       display: none;
     }
+  }
+}
+
+.light {
+  .card__description {
+    background-color: var(--primary-white);
+    color: var(--primary-black);
+    &_year {
+      color: var(--accent-red);
+    }
+    &::before {
+      background-color: var(--accent-red);
+    }
+  }
+  .card__arrow {
+    background-color: var(--accent-red);
   }
 }

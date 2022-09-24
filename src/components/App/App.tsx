@@ -31,7 +31,7 @@ function App() {
   ];
   return (
     <div className="App">
-      <CardGrid cards={cards} />
+      <CardGrid cards={cards} DarkTheme={false} />
     </div>
   );
 }
