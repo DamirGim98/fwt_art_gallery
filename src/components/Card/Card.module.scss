@@ -25,8 +25,8 @@
     height: auto;
     bottom: 0;
     position: absolute;
-    background-color: var(--primary-black);
-    color: var(--primary-light-gray);
+    background-color: var(--primary-white);
+    color: var(--primary-black);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,7 +39,7 @@
       transform: translateY(-50%);
       height: 50%;
       width: 2px;
-      background-color: var(--accent-gold);
+      background-color: var(--accent-red);
       justify-self: center;
     }
 
@@ -53,7 +53,7 @@
       font-weight: 700;
       font-size: 12px ;
       line-height: 15px;
-      color: var(--accent-gold);
+      color: var(--accent-red);
     }
   }
 
@@ -63,7 +63,7 @@
     right: -24px;
     position: absolute;
     height: 100%;
-    background-color: var(--accent-gold);
+    background-color: var(--accent-red);
     justify-content: center;
     align-items: center;
     @media (min-width: $breakpoint-s-desktop) {
@@ -72,18 +72,18 @@
   }
 }
 
-.light {
+.dark {
   .card__description {
-    background-color: var(--primary-white);
-    color: var(--primary-black);
+    background-color: var(--primary-black);
+    color: var(--primary-light-gray);
     &_year {
-      color: var(--accent-red);
+      color: var(--accent-gold);
     }
     &::before {
-      background-color: var(--accent-red);
+      background-color: var(--accent-gold);
     }
   }
   .card__arrow {
-    background-color: var(--accent-red);
+    background-color: var(--accent-gold);
   }
 }

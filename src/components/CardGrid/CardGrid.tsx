@@ -11,12 +11,11 @@ interface CardGridProps {
 
 const CardGrid: FC<CardGridProps> = ({ cards, DarkTheme }) => {
   const cx = cn.bind(styles);
-  const colorTheme = DarkTheme ? '' : 'light';
   return (
-    <div className={cx('wrapper', colorTheme)}>
-      <div className={cx('wrapper__container')}>
+    <div className={cx('grid')}>
+      <div className={cx('grid__container')}>
         {cards.map((card) => (
-          <Card card={card} key={card.id} theme={colorTheme} />
+          <Card card={card} key={card.id} theme={DarkTheme} />
         ))}
       </div>
     </div>

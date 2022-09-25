@@ -1,9 +1,11 @@
 import React from 'react';
-import './App.scss';
+import cn from 'classnames/bind';
+import styles from './App.module.scss';
 import CardGrid from '../CardGrid';
-import Button from '../UI/Button';
 
 function App() {
+  const cx = cn.bind(styles);
+  const theme = false;
   const cards = [
     {
       id: 1,
@@ -31,9 +33,8 @@ function App() {
     },
   ];
   return (
-    <div className="App">
-      <CardGrid cards={cards} DarkTheme={false} />
-      <Button variant={'scrollUp'} theme={false} />
+    <div className={cx('wrapper', { dark: theme })}>
+      <CardGrid cards={cards} DarkTheme={theme} />
     </div>
   );
 }
