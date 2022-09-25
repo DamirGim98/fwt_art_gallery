@@ -5,7 +5,7 @@ import CardGrid from '../CardGrid';
 
 function App() {
   const cx = cn.bind(styles);
-  const theme = true;
+  const theme = false;
   const cards = [
     {
       id: 1,

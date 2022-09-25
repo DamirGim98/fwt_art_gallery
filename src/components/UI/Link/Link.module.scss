@@ -1,0 +1,21 @@
+.link {
+  width: max-content;
+  span {
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 14px;
+    color: var(--primary-dark-gray);
+    text-decoration: underline;
+    &:hover {
+      color: var(--primary-black);
+    }
+  }
+
+  &.dark > span {
+    color: var(--primary-light-gray);
+    &:hover {
+      color: var(--primary-white);
+    }
+  }
+}
