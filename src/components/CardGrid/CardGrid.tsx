@@ -15,7 +15,7 @@ const CardGrid: FC<CardGridProps> = ({ cards, DarkTheme }) => {
     <div className={cx('grid')}>
       <div className={cx('grid__container')}>
         {cards.map((card) => (
-          <Card card={card} key={card.id} theme={DarkTheme} />
+          <Card {...card} key={card.id} theme={DarkTheme} />
         ))}
       </div>
     </div>

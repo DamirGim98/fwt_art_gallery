@@ -4,20 +4,19 @@ import { ICard } from '../../types/types';
 import { ReactComponent as Arrow } from '../../images/svg/arrow.svg';
 import styles from './Card.module.scss';
 
-interface ICardProps {
-  card: ICard;
+interface ICardProps extends ICard {
   theme?: boolean;
 }
 
-const Card: FC<ICardProps> = ({ card, theme }) => {
+const Card: FC<ICardProps> = ({ imgUrl, title, name, year, theme }) => {
   const cx = cn.bind(styles);
   return (
     <div className={cx('card', { dark: theme })}>
-      <img className={cx('card__img')} src={card.imgUrl} alt="card_painting" />
+      <img className={cx('card__img')} src={imgUrl} alt="card_painting" />
       <div className={cx('card__description')}>
-        <div className={cx('card__description_title')}>{card.title}</div>
-        <div className={cx('card__description_name')}>{card.name}</div>
-        <div className={cx('card__description_year')}>{card.year}</div>
+        <div className={cx('card__description_title')}>{title}</div>
+        <div className={cx('card__description_name')}>{name}</div>
+        <div className={cx('card__description_year')}>{year}</div>
         <div className={cx('card__arrow')}>
           <Arrow fill={'#DEDEDE'} />
         </div>

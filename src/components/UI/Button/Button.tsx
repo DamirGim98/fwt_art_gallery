@@ -40,7 +40,7 @@ const Button: FC<IButtonProps> = ({
       {variant === 'delete' && <TrashCan />}
       {variant === 'themeToggle' && (theme ? <ThemeDark /> : <ThemeLight />)}
       {variant === 'scrollUp' && <ArrowUp />}
-      <span>{children}</span>
+      {['underlined', 'outlined'].includes(variant || '') && <span>{children}</span>}
     </button>
   );
 };

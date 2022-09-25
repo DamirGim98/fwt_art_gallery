@@ -5,7 +5,7 @@ import CardGrid from '../CardGrid';
 
 function App() {
   const cx = cn.bind(styles);
-  const theme = false;
+  const theme = true;
   const cards = [
     {
       id: 1,
@@ -38,5 +38,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
