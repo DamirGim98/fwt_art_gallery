@@ -1,0 +1,151 @@
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  transition: all 0.5s;
+  span {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+  }
+
+  &.outlined {
+    width: 200px;
+    height: 47px;
+    background: var(--primary-black);
+    border-radius: 30px;
+    color: var(--primary-white);
+
+    &:hover, &:focus {
+      background: var(--primary-black);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 30px;
+    }
+
+    &.dark {
+      background-color: var(--accent-gold);
+
+      &:hover, &:focus {
+        background: var(--accent-gold);
+        box-shadow: 0 4px 10px rgba(171, 137, 86, 1);
+        border-radius: 30px;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+
+  &.underlined {
+    position: relative;
+    width: auto;
+    height: auto;
+    color: var(--primary-dark-gray);
+    text-decoration: underline;
+
+    & > svg {
+      margin-right: 12px;
+      fill: var(--primary-dark-gray);
+    }
+
+    &:hover, &:focus {
+      color: var(--primary-black);
+
+      svg {
+        fill: var(--primary-black);
+      }
+    }
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
+
+    &.dark {
+      color: var(--primary-light-gray);
+
+      & > svg {
+        fill: var(--primary-light-gray);
+      }
+
+      &:hover, &:focus {
+        color: var(--primary-white);
+
+        svg {
+          fill: var(--primary-white);
+        }
+      }
+
+      &:disabled {
+        cursor: default;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &.delete, &.themeToggle, &.scrollUp {
+    padding: 6px;
+    border-radius: 4px;
+    & > svg > path {
+      fill: var(--primary-dark-gray);
+    }
+    &:disabled {
+      cursor: default;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    &:hover, &:focus {
+      svg > path {
+        fill: var(--primary-black);
+      }
+    }
+    &.dark {
+      & > svg > path {
+        fill: var(--primary-light-gray);
+      }
+      &:hover, &:focus {
+        svg > path {
+          fill: var(--primary-white);
+        }
+      }
+    }
+  }
+
+  &.themeToggle {
+    &.dark{
+      background: var(--secondary-black);
+      border-radius: 100%;
+    }
+  }
+
+  &.scrollUp {
+    background: var(--primary-white);
+    height: 60px;
+    width: 60px;
+    border: 1px solid var(--primary-light-gray);
+    border-radius: 100%;
+    &.dark {
+      background: var(--secondary-black);
+      border: none;
+      &:hover {
+        background: #242222;
+      }
+    }
+  }
+}

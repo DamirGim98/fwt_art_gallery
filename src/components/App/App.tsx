@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import CardGrid from '../CardGrid';
+import Button from '../UI/Button';
 
 function App() {
   const cards = [
@@ -32,6 +33,7 @@ function App() {
   return (
     <div className="App">
       <CardGrid cards={cards} DarkTheme={false} />
+      <Button variant={'scrollUp'} theme={false} />
     </div>
   );
 }
