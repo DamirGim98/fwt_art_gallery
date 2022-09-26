@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ThemeContextType {
+export interface ThemeContextType {
   theme: boolean;
   toggleTheme?: () => void;
 }

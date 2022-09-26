@@ -46,22 +46,24 @@ const Button: FC<IButtonProps> = ({
 }) => {
   const cx = cn.bind(styles);
   return (
-    <button
-      className={cx('button', variant, {
-        button__disabled: isDisabled,
-        dark: theme,
-      })}
-      disabled={isDisabled}
-      type={typeButton}
-      onClick={onClick}
-      {...other}
-    >
-      {variant === 'underlined' && <Plus />}
-      {variant === 'delete' && <TrashCan />}
-      {variant === 'themeToggle' && (theme ? <ThemeDark /> : <ThemeLight />)}
-      {variant === 'scrollUp' && <ArrowUp />}
-      {['underlined', 'outlined'].includes(variant || '') && <span>{children}</span>}
-    </button>
+    <div>
+      <button
+        className={cx('button', variant, {
+          button__disabled: isDisabled,
+          dark: theme,
+        })}
+        disabled={isDisabled}
+        type={typeButton}
+        onClick={onClick}
+        {...other}
+      >
+        {variant === 'underlined' && <Plus />}
+        {variant === 'delete' && <TrashCan />}
+        {variant === 'themeToggle' && (theme ? <ThemeDark /> : <ThemeLight />)}
+        {variant === 'scrollUp' && <ArrowUp />}
+        {['underlined', 'outlined'].includes(variant || '') && <span>{children}</span>}
+      </button>
+    </div>
   );
 };
 

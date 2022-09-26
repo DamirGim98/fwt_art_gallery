@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
 import './scss/index.scss';
-import { ThemeContext } from './context/context';
+import { ThemeComponent } from './context/ThemeComponent';
 
 const Main = () => {
-  const [theme, setTheme] = useState<boolean>(false);
-  const toggleTheme = () => {
-    setTheme(!theme);
-  };
   return (
     <React.StrictMode>
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <ThemeComponent>
         <App />
-      </ThemeContext.Provider>
+      </ThemeComponent>
     </React.StrictMode>
   );
 };
