@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cn from 'classnames/bind';
 import styles from './App.module.scss';
 import CardGrid from '../CardGrid';
+import { ThemeContext } from '../../context/context';
 
 function App() {
   const cx = cn.bind(styles);
-  const theme = false;
+  const { theme } = useContext(ThemeContext);
   const cards = [
     {
       id: 1,
