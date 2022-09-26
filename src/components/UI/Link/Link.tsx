@@ -1,6 +1,7 @@
-import React, { DOMAttributes, FC, ReactNode } from 'react';
+import React, { DOMAttributes, FC, ReactNode, useContext } from 'react';
 import cn from 'classnames/bind';
 import styles from './Link.module.scss';
+import { ThemeContext } from '../../../context/context';
 
 interface ILinkProps extends DOMAttributes<HTMLAnchorElement> {
   /**
@@ -17,8 +18,9 @@ interface ILinkProps extends DOMAttributes<HTMLAnchorElement> {
   children?: ReactNode;
 }
 
-const Link: FC<ILinkProps> = ({ link = '#', theme, children, ...other }) => {
+const Link: FC<ILinkProps> = ({ link = '#', children, ...other }) => {
   const cx = cn.bind(styles);
+  const { theme } = useContext(ThemeContext);
   return (
     <a href={link} className={cx('link', { dark: theme }, { ...other })}>
       <span>{children}</span>

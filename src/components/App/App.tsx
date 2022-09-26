@@ -4,6 +4,7 @@ import styles from './App.module.scss';
 import CardGrid from '../CardGrid';
 import { ThemeContext } from '../../context/context';
 import Header from '../Header';
+import Footer from '../Footer';
 
 function App() {
   const cx = cn.bind(styles);
@@ -38,6 +39,7 @@ function App() {
     <div className={cx('wrapper', { dark: theme })}>
       <Header />
       <CardGrid cards={cards} DarkTheme={theme} />
+      <Footer />
     </div>
   );
 }
