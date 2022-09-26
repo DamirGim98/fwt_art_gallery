@@ -1,7 +1,6 @@
 import React, { DOMAttributes, FC, ReactNode } from 'react';
 import cn from 'classnames/bind';
 import styles from './Button.module.scss';
-import { ReactComponent as Plus } from './assets/plus.svg';
 import { ReactComponent as TrashCan } from './assets/trashCan.svg';
 import { ReactComponent as ThemeLight } from './assets/themeIconLight.svg';
 import { ReactComponent as ThemeDark } from './assets/themeIcon.svg';
@@ -12,11 +11,16 @@ interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
    * Choose one of the available variants to work with, note text maybe not available
    * for some of them.
    */
-  variant?: 'outlined' | 'underlined' | 'delete' | 'themeToggle' | 'scrollUp';
+  variant?: 'outlined' | 'underlined' | 'delete' | 'themeToggle' | 'scrollUp' | 'text-btn';
   /**
    * Allows dark and light theme, dark theme is considered true value.
    */
   theme?: boolean;
+  /**
+   * If passing SVGs as props define their position
+   */
+  svgPos?: 'left' | 'right';
+
   /**
    * Disabled property for the button both action and styling.
    */
@@ -38,6 +42,7 @@ interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
 const Button: FC<IButtonProps> = ({
   variant,
   theme,
+  svgPos = '',
   isDisabled,
   children,
   typeButton,
@@ -45,23 +50,28 @@ const Button: FC<IButtonProps> = ({
   ...other
 }) => {
   const cx = cn.bind(styles);
+  const optionsWithText = ['underlined', 'outlined', 'text-btn'];
   return (
     <div>
       <button
-        className={cx('button', variant, {
-          button__disabled: isDisabled,
-          dark: theme,
-        })}
+        className={cx(
+          'button',
+          variant,
+          {
+            button__disabled: isDisabled,
+            dark: theme,
+          },
+          `svg-pos-${svgPos}`,
+        )}
         disabled={isDisabled}
         type={typeButton}
         onClick={onClick}
         {...other}
       >
-        {variant === 'underlined' && <Plus />}
         {variant === 'delete' && <TrashCan />}
         {variant === 'themeToggle' && (theme ? <ThemeDark /> : <ThemeLight />)}
         {variant === 'scrollUp' && <ArrowUp />}
-        {['underlined', 'outlined'].includes(variant || '') && <span>{children}</span>}
+        {optionsWithText.includes(variant || '') && <span>{children}</span>}
       </button>
     </div>
   );
