@@ -1,4 +1,6 @@
 .button {
+  width: auto;
+  height: auto;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -70,8 +72,6 @@
 
   &.underlined, &.text-btn {
     position: relative;
-    width: auto;
-    height: auto;
     color: var(--primary-dark-gray);
     text-decoration: underline;
 

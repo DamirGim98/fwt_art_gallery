@@ -1,6 +1,7 @@
 .hamburger {
   display: none;
   width: 24px;
+  z-index: 2;
   span {
     background-color: var( --icon-color);
     display: block;
