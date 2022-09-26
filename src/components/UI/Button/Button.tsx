@@ -52,7 +52,7 @@ const Button: FC<IButtonProps> = ({
   const cx = cn.bind(styles);
   const optionsWithText = ['underlined', 'outlined', 'text-btn'];
   return (
-    <div>
+    <>
       <button
         className={cx(
           'button',
@@ -73,7 +73,7 @@ const Button: FC<IButtonProps> = ({
         {variant === 'scrollUp' && <ArrowUp />}
         {optionsWithText.includes(variant || '') && <span>{children}</span>}
       </button>
-    </div>
+    </>
   );
 };
 

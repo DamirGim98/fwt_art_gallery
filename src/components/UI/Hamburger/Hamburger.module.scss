@@ -1,0 +1,28 @@
+.hamburger {
+  display: none;
+  width: 24px;
+  span {
+    background-color: var( --icon-color);
+    display: block;
+    height: 2px;
+    width: 100%;
+    margin-bottom: 4px;
+    transition: .5s all;
+  }
+
+  &.active span {
+    margin-bottom: -2px
+  }
+
+  &.active span:nth-child(1) {
+    transform: translateY(3px) rotate(-45deg)
+  }
+
+  &.active span:nth-child(2) {
+    display: none
+  }
+
+  &.active span:nth-child(3) {
+    transform: translateY(3px) rotate(45deg)
+  }
+}

@@ -3,7 +3,7 @@ import cn from 'classnames/bind';
 import styles from './App.module.scss';
 import CardGrid from '../CardGrid';
 import { ThemeContext } from '../../context/context';
-import Button from '../UI/Button';
+import Header from '../Header';
 
 function App() {
   const cx = cn.bind(styles);
@@ -36,8 +36,8 @@ function App() {
   ];
   return (
     <div className={cx('wrapper', { dark: theme })}>
+      <Header />
       <CardGrid cards={cards} DarkTheme={theme} />
-      <Button variant={'themeToggle'} theme={theme} />
     </div>
   );
 }
