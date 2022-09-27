@@ -13,7 +13,8 @@ const Menu: FC<IMenuProps> = ({ visible, user }) => {
   const cx = cn.bind(styles);
   const { theme, toggleTheme } = useContext(ThemeContext);
   return (
-    <div className={cx('menu', { active: visible }, { dark: theme })}>
+    <>
+      <div className={cx('menu', { active: visible }, { dark: theme })} />
       <div className={cx('menu__options', { dark: theme }, { active: visible })}>
         <div className={cx('menu__theme')} onClick={toggleTheme}>
           <Button variant={'themeToggle'} theme={theme} />
@@ -36,7 +37,7 @@ const Menu: FC<IMenuProps> = ({ visible, user }) => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
