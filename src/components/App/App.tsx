@@ -37,7 +37,7 @@ function App() {
   ];
   return (
     <div className={cx('wrapper', { dark: theme })}>
-      <Header />
+      <Header user={{ name: 'damir' }} />
       <CardGrid cards={cards} DarkTheme={theme} />
       <Footer />
     </div>

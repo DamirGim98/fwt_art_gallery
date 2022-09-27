@@ -6,3 +6,14 @@ export interface ICard {
   imgUrl: string;
   OnClick?: () => void;
 }
+
+export interface IUser {
+  name: string;
+}
+
+export interface IHeaderProps {
+  user?: IUser;
+  onLogin?: () => void;
+  onLogout?: () => void;
+  onCreateAccount?: () => void;
+}

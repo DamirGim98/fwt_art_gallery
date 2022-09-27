@@ -1,22 +1,12 @@
 import React, { FC, useContext, useState } from 'react';
 import cn from 'classnames/bind';
+import { IHeaderProps } from '../../types/types';
 import styles from './Header.module.scss';
 import { ReactComponent as Logo } from '../../images/logo.svg';
 import Button from '../UI/Button';
 import { ThemeContext } from '../../context/context';
 import Hamburger from '../UI/Hamburger';
 import Menu from '../Menu';
-
-export interface IUser {
-  name: string;
-}
-
-export interface IHeaderProps {
-  user?: IUser;
-  onLogin?: () => void;
-  onLogout?: () => void;
-  onCreateAccount?: () => void;
-}
 
 const Header: FC<IHeaderProps> = ({ user }) => {
   const cx = cn.bind(styles);
@@ -28,7 +18,7 @@ const Header: FC<IHeaderProps> = ({ user }) => {
   return (
     <>
       <header>
-        <Menu visible={menu} />
+        <Menu visible={menu} user={user} />
         <div className={cx('header', { dark: theme })}>
           <Logo />
           <div className={cx('header__buttons')}>
