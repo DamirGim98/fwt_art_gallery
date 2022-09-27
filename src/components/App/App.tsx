@@ -37,9 +37,11 @@ function App() {
   ];
   return (
     <div className={cx('wrapper', { dark: theme })}>
-      <Header user={{ name: 'damir' }} />
-      <CardGrid cards={cards} DarkTheme={theme} />
-      <Footer />
+      <div className={cx('container')}>
+        <Header />
+        <CardGrid cards={cards} DarkTheme={theme} />
+        <Footer />
+      </div>
     </div>
   );
 }
