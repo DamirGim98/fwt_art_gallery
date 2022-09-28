@@ -7,6 +7,7 @@ import Button from '../UI/Button';
 import { ThemeContext } from '../../context/context';
 import Hamburger from '../UI/Hamburger';
 import Menu from '../Menu';
+import TintedBackground from '../UI/TintedBackground';
 
 const Header: FC<IHeaderProps> = ({ user }) => {
   const cx = cn.bind(styles);
@@ -18,6 +19,7 @@ const Header: FC<IHeaderProps> = ({ user }) => {
   return (
     <>
       <header>
+        <TintedBackground visible={menu} />
         <Menu visible={menu} user={user} />
         <div className={cx('header', { dark: theme })}>
           <Logo />
