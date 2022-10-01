@@ -37,11 +37,10 @@ interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
 const Button: FC<IButtonProps> = ({
   variant,
   theme,
-  svgPos = 'left',
+  svgPos = '',
   isDisabled = false,
   children,
   typeButton = 'button',
-  onClick,
   ...args
 }) => {
   const cx = cn.bind(styles);

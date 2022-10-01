@@ -4,16 +4,19 @@ import styles from './Menu.module.scss';
 import Button from '../UI/Button';
 import { ThemeContext } from '../../context/context';
 import { IHeaderProps } from '../../types/types';
+import TintedBackground from '../UI/TintedBackground';
 
 interface IMenuProps extends IHeaderProps {
   visible: boolean;
+  menuControl: () => void;
 }
 
-const Menu: FC<IMenuProps> = ({ visible, user }) => {
+const Menu: FC<IMenuProps> = ({ visible, user, menuControl }) => {
   const cx = cn.bind(styles);
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
   return (
     <>
+      <TintedBackground visible={visible} onClick={menuControl} />
       <div className={cx('menu__options', { dark: isDarkTheme }, { active: visible })}>
         <div className={cx('menu__theme')} onClick={toggleTheme}>
           <Button variant={'themeToggle'} theme={isDarkTheme} />

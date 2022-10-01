@@ -7,20 +7,26 @@ import Button from '../UI/Button';
 import { ThemeContext } from '../../context/context';
 import Hamburger from '../UI/Hamburger';
 import Menu from '../Menu';
-import TintedBackground from '../UI/TintedBackground';
+import useScrollLock from '../../hooks/useScrollLock';
 
 const Header: FC<IHeaderProps> = ({ user }) => {
   const cx = cn.bind(styles);
+
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
+
+  const toggleScroll = useScrollLock();
+
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
+    toggleScroll();
   };
+
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <>
       <header>
-        <TintedBackground visible={isMenuActive} />
-        <Menu visible={isMenuActive} user={user} />
+        <Menu visible={isMenuActive} user={user} menuControl={toggleMenu} />
         <div className={cx('header', { dark: isDarkTheme })}>
           <Logo />
           <div className={cx('header__buttons')}>
@@ -35,7 +41,7 @@ const Header: FC<IHeaderProps> = ({ user }) => {
               </>
             )}
             <Button variant={'themeToggle'} theme={isDarkTheme} onClick={toggleTheme} />
-            <Hamburger onClick={toggleMenu} />
+            <Hamburger isActive={isMenuActive} onClick={toggleMenu} />
           </div>
         </div>
       </header>
