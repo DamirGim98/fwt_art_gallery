@@ -18,11 +18,11 @@ interface ILinkProps extends DOMAttributes<HTMLAnchorElement> {
   children?: ReactNode;
 }
 
-const Link: FC<ILinkProps> = ({ link = '#', children, ...other }) => {
+const Link: FC<ILinkProps> = ({ link = '#', children, ...args }) => {
   const cx = cn.bind(styles);
-  const { theme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(ThemeContext);
   return (
-    <a href={link} className={cx('link', { dark: theme }, { ...other })}>
+    <a href={link} className={cx('link', { dark: isDarkTheme }, { ...args })}>
       <span>{children}</span>
     </a>
   );

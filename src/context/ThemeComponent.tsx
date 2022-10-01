@@ -6,10 +6,12 @@ type ThemeStateProps = {
 };
 
 export const ThemeComponent: FC<ThemeStateProps> = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeContextType['theme']>(false);
+  const [isDarkTheme, setIsDarkTheme] = useState<ThemeContextType['isDarkTheme']>(false);
   const toggleTheme = () => {
-    setTheme(!theme);
+    setIsDarkTheme(!isDarkTheme);
   };
 
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ isDarkTheme, toggleTheme }}>{children}</ThemeContext.Provider>
+  );
 };

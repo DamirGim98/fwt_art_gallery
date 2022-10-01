@@ -9,11 +9,11 @@ import { ReactComponent as FacebookIcon } from '../../images/svg/facebook.svg';
 
 const Footer: FC = () => {
   const cx = cn.bind(styles);
-  const { theme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(ThemeContext);
   return (
     <footer>
       <hr />
-      <div className={cx('footer', { dark: theme })}>
+      <div className={cx('footer', { dark: isDarkTheme })}>
         <div className={cx('footer__info')}>
           <span>
             Проект реализован в рамках стажировки

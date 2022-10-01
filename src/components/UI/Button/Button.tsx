@@ -20,7 +20,6 @@ interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
    * If passing SVGs as props define their position
    */
   svgPos?: 'left' | 'right';
-
   /**
    * Disabled property for the button both action and styling.
    */
@@ -30,10 +29,6 @@ interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
    */
   typeButton?: 'button' | 'submit';
   /**
-   * Mouse event from React.
-   */
-  onClick?: (event: React.MouseEvent) => void;
-  /**
    * Child properties if you want to use Elements inside.
    */
   children?: ReactNode;
@@ -42,38 +37,34 @@ interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
 const Button: FC<IButtonProps> = ({
   variant,
   theme,
-  svgPos = '',
-  isDisabled,
+  svgPos = 'left',
+  isDisabled = false,
   children,
-  typeButton,
+  typeButton = 'button',
   onClick,
-  ...other
+  ...args
 }) => {
   const cx = cn.bind(styles);
   const optionsWithText = ['underlined', 'outlined', 'text-btn'];
   return (
-    <>
-      <button
-        className={cx(
-          'button',
-          variant,
-          {
-            button__disabled: isDisabled,
-            dark: theme,
-          },
-          `svg-pos-${svgPos}`,
-        )}
-        disabled={isDisabled}
-        type={typeButton}
-        onClick={onClick}
-        {...other}
-      >
-        {variant === 'delete' && <TrashCan />}
-        {variant === 'themeToggle' && (theme ? <ThemeDark /> : <ThemeLight />)}
-        {variant === 'scrollUp' && <ArrowUp />}
-        {optionsWithText.includes(variant || '') && <span>{children}</span>}
-      </button>
-    </>
+    <button
+      className={cx(
+        'button',
+        variant,
+        {
+          dark: theme,
+        },
+        `svg-pos-${svgPos}`,
+      )}
+      disabled={isDisabled}
+      type={typeButton}
+      {...args}
+    >
+      {variant === 'delete' && <TrashCan />}
+      {variant === 'themeToggle' && (theme ? <ThemeDark /> : <ThemeLight />)}
+      {variant === 'scrollUp' && <ArrowUp />}
+      {optionsWithText.includes(variant || '') && <span>{children}</span>}
+    </button>
   );
 };
 

@@ -11,27 +11,27 @@ interface IMenuProps extends IHeaderProps {
 
 const Menu: FC<IMenuProps> = ({ visible, user }) => {
   const cx = cn.bind(styles);
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
   return (
     <>
-      <div className={cx('menu__options', { dark: theme }, { active: visible })}>
+      <div className={cx('menu__options', { dark: isDarkTheme }, { active: visible })}>
         <div className={cx('menu__theme')} onClick={toggleTheme}>
-          <Button variant={'themeToggle'} theme={theme} />
+          <Button variant={'themeToggle'} theme={isDarkTheme} />
           <Button
             variant={'underlined'}
-            children={theme ? 'light theme' : 'dark theme'}
-            theme={theme}
+            children={isDarkTheme ? 'light theme' : 'dark theme'}
+            theme={isDarkTheme}
           />
         </div>
         <div className={cx('menu__login')}>
           {user ? (
             <>
-              <Button variant={'text-btn'} children={'log out'} theme={theme} />
+              <Button variant={'text-btn'} children={'log out'} theme={isDarkTheme} />
             </>
           ) : (
             <>
-              <Button variant={'text-btn'} children={'log in'} theme={theme} />
-              <Button variant={'text-btn'} children={'sign up'} theme={theme} />
+              <Button variant={'text-btn'} children={'log in'} theme={isDarkTheme} />
+              <Button variant={'text-btn'} children={'sign up'} theme={isDarkTheme} />
             </>
           )}
         </div>

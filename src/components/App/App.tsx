@@ -8,7 +8,7 @@ import Footer from '../Footer';
 
 function App() {
   const cx = cn.bind(styles);
-  const { theme } = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(ThemeContext);
   const cards = [
     {
       id: 1,
@@ -36,10 +36,10 @@ function App() {
     },
   ];
   return (
-    <div className={cx('wrapper', { dark: theme })}>
+    <div className={cx('wrapper', { dark: isDarkTheme })}>
       <div className={cx('container')}>
         <Header />
-        <CardGrid cards={cards} DarkTheme={theme} />
+        <CardGrid cards={cards} />
         <Footer />
       </div>
     </div>

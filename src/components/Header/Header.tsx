@@ -11,30 +11,30 @@ import TintedBackground from '../UI/TintedBackground';
 
 const Header: FC<IHeaderProps> = ({ user }) => {
   const cx = cn.bind(styles);
-  const [menu, setMenu] = useState<boolean>(false);
+  const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
   const toggleMenu = () => {
-    setMenu(!menu);
+    setIsMenuActive(!isMenuActive);
   };
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
   return (
     <>
       <header>
-        <TintedBackground visible={menu} />
-        <Menu visible={menu} user={user} />
-        <div className={cx('header', { dark: theme })}>
+        <TintedBackground visible={isMenuActive} />
+        <Menu visible={isMenuActive} user={user} />
+        <div className={cx('header', { dark: isDarkTheme })}>
           <Logo />
           <div className={cx('header__buttons')}>
             {user ? (
               <>
-                <Button variant={'text-btn'} children={'log out'} theme={theme} />
+                <Button variant={'text-btn'} children={'log out'} theme={isDarkTheme} />
               </>
             ) : (
               <>
-                <Button variant={'text-btn'} children={'log in'} theme={theme} />
-                <Button variant={'text-btn'} children={'sign up'} theme={theme} />
+                <Button variant={'text-btn'} children={'log in'} theme={isDarkTheme} />
+                <Button variant={'text-btn'} children={'sign up'} theme={isDarkTheme} />
               </>
             )}
-            <Button variant={'themeToggle'} theme={theme} onClick={toggleTheme} />
+            <Button variant={'themeToggle'} theme={isDarkTheme} onClick={toggleTheme} />
             <Hamburger onClick={toggleMenu} />
           </div>
         </div>

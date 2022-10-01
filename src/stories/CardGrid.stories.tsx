@@ -38,7 +38,6 @@ ArtistGrid.args = {
       year: '1998 - 2000',
     },
   ],
-  DarkTheme: true,
 };
 
 export const PaintingGrid = Template.bind({});
@@ -65,5 +64,4 @@ PaintingGrid.args = {
       year: '1998',
     },
   ],
-  DarkTheme: false,
 };

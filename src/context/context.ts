@@ -1,12 +1,12 @@
 import React from 'react';
 
 export interface ThemeContextType {
-  theme: boolean;
+  isDarkTheme: boolean;
   toggleTheme?: () => void;
 }
 
 export const initialState: ThemeContextType = {
-  theme: false,
+  isDarkTheme: false,
 };
 
 export const ThemeContext = React.createContext<ThemeContextType>(initialState);
