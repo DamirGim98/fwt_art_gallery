@@ -1,0 +1,25 @@
+@import '../../scss/breakpoints.scss';
+
+.wrapper {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--primary-white);
+  transition: all 0.5s;
+  &.dark {
+    background-color: var(--primary-black);
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+@media (min-width: $breakpoint-l-desktop) {
+  .container {
+    max-width: 1440px;
+  }
+}

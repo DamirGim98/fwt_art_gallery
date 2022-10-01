@@ -1,14 +1,10 @@
-import React, { useContext } from 'react';
-import cn from 'classnames/bind';
-import styles from './App.module.scss';
+import React from 'react';
 import CardGrid from '../CardGrid';
-import { ThemeContext } from '../../context/context';
 import Header from '../Header';
 import Footer from '../Footer';
+import Wrapper from '../Wrapper';
 
 function App() {
-  const cx = cn.bind(styles);
-  const { isDarkTheme } = useContext(ThemeContext);
   const cards = [
     {
       id: 1,
@@ -36,13 +32,11 @@ function App() {
     },
   ];
   return (
-    <div className={cx('wrapper', { dark: isDarkTheme })}>
-      <div className={cx('container')}>
-        <Header />
-        <CardGrid cards={cards} />
-        <Footer />
-      </div>
-    </div>
+    <>
+      <Header />
+      <CardGrid cards={cards} />
+      <Footer />
+    </>
   );
 }
 export default App;
