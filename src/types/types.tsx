@@ -1,5 +1,5 @@
 export interface ICard {
-  id?: number;
+  id: number;
   name: string;
   title?: string;
   year: string;
@@ -16,4 +16,18 @@ export interface IHeaderProps {
   onLogin?: () => void;
   onLogout?: () => void;
   onCreateAccount?: () => void;
+}
+
+export interface IArtist {
+  genres: string;
+  id: string;
+  name: string;
+  description: string;
+  yearsOfLife: string;
+}
+
+export interface IState {
+  cards: ICard[];
+  status?: 'idle' | 'loading' | 'succeeded' | 'rejected';
+  error?: string;
 }
