@@ -18,16 +18,33 @@ export interface IHeaderProps {
   onCreateAccount?: () => void;
 }
 
+export interface IState {
+  artists: IArtist[];
+  status?: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error?: string;
+}
+
+export interface IImage {
+  _id: string;
+  src: string;
+  webp: string;
+  webp2x: string;
+}
+
+export interface IMainPainting {
+  _id: string;
+  artist: string;
+  image: IImage;
+  name: string;
+  yearOfCreation: string;
+}
+
 export interface IArtist {
-  genres: string;
+  genres: string[];
   id: string;
   name: string;
   description: string;
   yearsOfLife: string;
-}
-
-export interface IState {
-  cards: ICard[];
-  status?: 'idle' | 'loading' | 'succeeded' | 'rejected';
-  error?: string;
+  mainPainting: IMainPainting;
+  __v: number;
 }

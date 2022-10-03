@@ -3,18 +3,21 @@ import CardGrid from '../CardGrid';
 import Header from '../Header';
 import Footer from '../Footer';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchArtist, selectAllArtists } from '../../store/ArtistSlice';
+import { fetchArtist, selectAllArtists, selectArtistsStatus } from '../../store/ArtistSlice';
 
 function App() {
-  const cards = useAppSelector(selectAllArtists);
+  const artists = useAppSelector(selectAllArtists);
+  const artistsStatus = useAppSelector(selectArtistsStatus);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchArtist());
-  }, []);
+    if (artistsStatus === 'idle') {
+      dispatch(fetchArtist());
+    }
+  }, [artistsStatus]);
   return (
     <>
       <Header />
-      <CardGrid cards={cards} />
+      <CardGrid></CardGrid>
       <Footer />
     </>
   );

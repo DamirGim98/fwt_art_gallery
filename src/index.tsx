@@ -9,15 +9,13 @@ import { store } from './store/store';
 
 const Main = () => {
   return (
-    <React.StrictMode>
+    <Provider store={store}>
       <ThemeComponent>
         <Wrapper>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </Wrapper>
       </ThemeComponent>
-    </React.StrictMode>
+    </Provider>
   );
 };
 

@@ -5,36 +5,11 @@ import type { RootState } from './store';
 
 export const fetchArtist = createAsyncThunk('artist/fetchArtist', async () => {
   const response = await axios.get('https://internship-front.framework.team/artists/static');
-  return response.data as IArtist;
+  return response.data as IArtist[];
 });
 
 const initialState: IState = {
-  cards: [
-    {
-      id: 1,
-      name: 'Ivan Ivanov',
-      imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
-      year: '1998-1999',
-    },
-    {
-      id: 2,
-      name: 'Ivan Ivanov',
-      imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
-      year: '1998-1999',
-    },
-    {
-      id: 3,
-      name: 'Anton Anton ',
-      imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
-      year: '1998-1999',
-    },
-    {
-      id: 4,
-      name: 'Sergey Sergeev',
-      imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
-      year: '1998-1999',
-    },
-  ],
+  artists: [],
   status: 'idle',
   error: '',
 };
@@ -44,12 +19,22 @@ const artistSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchArtist.fulfilled, () => {
-      // console.log(action.payload);
-    });
+    builder
+      .addCase(fetchArtist.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchArtist.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.artists.push(...action.payload.slice(0, 3));
+      })
+      .addCase(fetchArtist.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
   },
 });
+export const selectArtistsStatus = (state: RootState) => state.artist.status;
 
-export const selectAllArtists = (state: RootState) => state.artist.cards;
+export const selectAllArtists = (state: RootState) => state.artist.artists;
 
 export default artistSlice.reducer;
