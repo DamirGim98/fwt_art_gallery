@@ -7,13 +7,13 @@ import { ThemeContext } from '../../context/context';
 
 const Card: FC<ICard> = ({ imgUrl, title, name, year }) => {
   const cx = cn.bind(styles);
-  const theme = useContext(ThemeContext);
+  const { isDarkTheme } = useContext(ThemeContext);
   const UrlImg = 'https://internship-front.framework.team'.concat(imgUrl);
   const regex = /\d{4}/g;
   const yearOfLife = year.match(regex)?.join(' - ');
 
   return (
-    <div className={cx('card', { dark: theme })}>
+    <div className={cx('card', { dark: isDarkTheme })}>
       <img className={cx('card__img')} src={UrlImg} alt="card_painting" />
       <div className={cx('card__description')}>
         <div className={cx('card__description_title')}>{title}</div>
