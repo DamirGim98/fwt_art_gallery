@@ -25,7 +25,7 @@ const artistSlice = createSlice({
       })
       .addCase(fetchArtist.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.artists.push(...action.payload.slice(0, 3));
+        state.artists.push(...action.payload);
       })
       .addCase(fetchArtist.rejected, (state, action) => {
         state.status = 'failed';
