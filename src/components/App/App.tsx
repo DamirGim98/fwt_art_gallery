@@ -11,6 +11,7 @@ import {
   EntityId,
 } from '../../store/ArtistSlice';
 import Card from '../Card';
+import Loader from '../UI/Loader';
 
 interface CardExcerptProps {
   id: EntityId;
@@ -46,9 +47,7 @@ function App() {
 
   let content;
 
-  if (artistsStatus === 'loading') {
-    content = <h1>Loading</h1>;
-  } else if (artistsStatus === 'succeeded') {
+  if (artistsStatus === 'succeeded') {
     content = artistsIds.map((artistId) => <CardExcerpt id={artistId} key={artistId} />);
   } else if (artistsStatus === 'failed') {
     content = <h1>Error, try later</h1>;
@@ -56,6 +55,7 @@ function App() {
   return (
     <>
       <Header />
+      {artistsStatus === 'loading' && <Loader />}
       <CardGrid>{content}</CardGrid>
       <Footer />
     </>

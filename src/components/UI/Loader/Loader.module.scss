@@ -1,0 +1,66 @@
+@mixin animation($stroke) {
+  @keyframes circle#{$stroke} {
+    $value: (40 + ($stroke - 1) * 13);
+    $rotation-angle: (10deg + 20deg *  ($stroke * 1.5 - 1));
+    0%, 100% {
+      transform: rotateZ(60deg);
+      stroke-dasharray: 1, 155;
+    }
+    50% {
+      stroke-dasharray: $value, 155;
+      transform: rotateZ($rotation-angle);
+    }
+  }
+}
+
+@for $i from 1 to 5 {
+  @include animation($i)
+}
+
+@mixin svg-loader($i) {
+  & > circle {
+    &:nth-child(#{$i}) {
+      @if $i == 4 {
+        opacity: 0.9;
+      } @else {
+        opacity: 0.35;
+    }
+      transform: rotateZ(60deg);
+      transform-origin: center;
+      stroke-dasharray: 1, 156;
+      animation: circle#{$i} 2s ease-in-out infinite;
+      z-index: $i;
+    }
+  }
+}
+
+
+.loader {
+  --loader-color: var(--primary-dark-gray);
+  &.dark {
+    --loader-color: var(--primary-light-gray);
+  }
+  &__container {
+    height: 100vh;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__item {
+    animation: rotate 1s linear infinite;
+    height: 60px;
+    width: 60px;
+    stroke: var(--loader-color);
+    @for $i from 1 to 5  {
+      @include svg-loader($i)
+    }
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
