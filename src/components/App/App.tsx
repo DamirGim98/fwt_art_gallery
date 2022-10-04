@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import CardGrid from '../CardGrid';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -12,7 +12,11 @@ import {
 } from '../../store/ArtistSlice';
 import Card from '../Card';
 
-const CardExcerpt = ({ id }: { id: EntityId }) => {
+interface CardExcerptProps {
+  id: EntityId;
+}
+
+let CardExcerpt: FC<CardExcerptProps> = ({ id }) => {
   const artist = useAppSelector((state) => selectArtistById(state, id));
   return (
     <>
@@ -27,6 +31,8 @@ const CardExcerpt = ({ id }: { id: EntityId }) => {
     </>
   );
 };
+
+CardExcerpt = React.memo(CardExcerpt);
 
 function App() {
   const artistsIds = useAppSelector(selectArtistsIds);
@@ -44,6 +50,8 @@ function App() {
     content = <h1>Loading</h1>;
   } else if (artistsStatus === 'succeeded') {
     content = artistsIds.map((artistId) => <CardExcerpt id={artistId} key={artistId} />);
+  } else if (artistsStatus === 'failed') {
+    content = <h1>Error, try later</h1>;
   }
   return (
     <>

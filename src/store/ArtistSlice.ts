@@ -1,5 +1,5 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { ArtistAPI } from '../Api/API';
 import type { IArtist, IState } from '../types/types';
 import type { RootState } from './store';
 
@@ -11,8 +11,7 @@ const artistAdapter = createEntityAdapter<IArtist>({
 });
 
 export const fetchArtist = createAsyncThunk('artist/fetchArtist', async () => {
-  const response = await axios.get('https://internship-front.framework.team/artists/static');
-  return response.data as IArtist[];
+  return ArtistAPI.getAllArtists();
 });
 
 const options = {
@@ -43,10 +42,7 @@ const artistSlice = createSlice({
 });
 export const selectArtistsStatus = (state: RootState) => state.artist.status;
 
-export const {
-  selectAll: selectAllArtists,
-  selectById: selectArtistById,
-  selectIds: selectArtistsIds,
-} = artistAdapter.getSelectors<RootState>((state) => state.artist);
+export const { selectById: selectArtistById, selectIds: selectArtistsIds } =
+  artistAdapter.getSelectors<RootState>((state) => state.artist);
 
 export default artistSlice.reducer;
