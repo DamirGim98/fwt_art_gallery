@@ -1,7 +1,7 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { ArtistAPI } from '../Api/API';
-import type { IArtist, IState } from '../types/types';
-import type { RootState } from './store';
+import { ArtistAPI } from '../../Api/API';
+import type { IArtist, IState } from '../../types/types';
+import type { RootState } from '../store';
 
 export type EntityId = number | string;
 

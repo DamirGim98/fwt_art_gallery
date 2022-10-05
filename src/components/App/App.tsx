@@ -9,10 +9,11 @@ import {
   selectArtistsIds,
   selectArtistsStatus,
   EntityId,
-} from '../../store/ArtistSlice';
+} from '../../store/Slice/ArtistSlice';
 import Card from '../Card';
 import Loader from '../UI/Loader';
 import ArtistAbout from '../ArtistAbout';
+import { fetchGenres } from '../../store/Slice/GenresSlice';
 
 interface CardExcerptProps {
   id: EntityId;
@@ -43,6 +44,7 @@ function App() {
   useEffect(() => {
     if (artistsStatus === 'idle') {
       dispatch(fetchArtist());
+      dispatch(fetchGenres());
     }
   }, [artistsStatus, dispatch]);
 
@@ -57,7 +59,7 @@ function App() {
     <>
       <Header />
       {artistsStatus === 'loading' && <Loader />}
-      <ArtistAbout id={'62e148114df711d4f7f68f01'} />
+      <ArtistAbout id={'62e148114df711d4f7f68f05'} />
       <CardGrid>{content}</CardGrid>
       <Footer />
     </>

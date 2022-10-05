@@ -1,4 +1,4 @@
-import { EntityId } from '../store/ArtistSlice';
+import { EntityId } from '../store/Slice/ArtistSlice';
 
 export interface ICard {
   id: string | number;
@@ -21,7 +21,6 @@ export interface IHeaderProps {
 }
 
 export interface IState {
-  artists: IArtist[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string;
 }
@@ -49,4 +48,9 @@ export interface IArtist {
   yearsOfLife: string;
   mainPainting: IMainPainting;
   __v: number;
+}
+
+export interface IGenre {
+  _id: string;
+  name: string;
 }
