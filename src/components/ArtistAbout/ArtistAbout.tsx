@@ -24,7 +24,7 @@ const ArtistAbout: FC<ArtistAboutProps> = ({ id }) => {
     <div className={cx('artist', { dark: isDarkTheme })}>
       <div className={cx('artist__menu')}>
         <Button variant={'underlined'} svgPos={'left'} theme={isDarkTheme}>
-          back
+          <span>back</span>
           <LeftArrow />
         </Button>
       </div>
@@ -33,7 +33,7 @@ const ArtistAbout: FC<ArtistAboutProps> = ({ id }) => {
         <div className={cx('artist__description', { dark: isDarkTheme })}>
           <div className={cx('artist_grid')}>
             <p className={cx('artist__years')}>{artist?.yearsOfLife}</p>
-            <p className={cx('artist__location')}>{artist?.yearsOfLife}</p>
+            <p className={cx('artist__location')}>Feodosia, Crimea</p>
             <h2 className={cx('artist__name')}>{artist?.name}</h2>
           </div>
           <div className={cx('artist_divider')}></div>
@@ -44,13 +44,10 @@ const ArtistAbout: FC<ArtistAboutProps> = ({ id }) => {
           </Button>
           <div className={cx('artist__labelContainer')}>
             <Label text={'Impression'} isActive={false} />
-            <Label text={'Another Style'} isActive={false} />
-            <Label text={'Russian Culture'} isActive={false} />
-            <Label text={'Art'} isActive={false} />
-            <Label text={'Ass'} isActive={false} />
           </div>
         </div>
       </div>
+      <h2 className={cx('artist__artworks')}>Artworks</h2>
     </div>
   );
 };

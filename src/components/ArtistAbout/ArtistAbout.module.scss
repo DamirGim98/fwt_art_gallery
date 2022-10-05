@@ -4,11 +4,11 @@
 .artist {
   display: flex;
   flex-direction: column;
-  padding-left: 0;
+  padding: 0;
   --text-color: var(--primary-dark-gray);
   --background-color: var(--primary-white);
   --accent-color: var(--accent-red);
-  transition: all 0.5s;
+
   &.dark {
     --accent-color: var(--accent-gold);
     --background-color: var(--primary-black);
@@ -16,71 +16,65 @@
   }
 
   &__menu {
-    padding-left: 25px;
+    padding-left: 45px;
     padding-bottom: 20px;
+    button > span > span {
+        display: none;
+    }
+  }
 
-  }
-  &__info {
-    position: relative;
-    padding-left: 100px;
-    display: flex;
-    justify-content: flex-end;
-  }
   &__img {
-    height: 1000px;
-    width: 1000px;
+    width: 100%;
+    height: auto;
     object-fit: fill;
   }
+
   &__description {
-    width: 604px;
-    height: 552px;
+    position: relative;
+    width: 100%;
+    height: auto;
     font-family: Cormorant, sans-serif;
     font-weight: 500;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: var(--background-color);
-    padding: 80px 60px;
+    background: none;
+    padding: 0 20px 0 20px;
   }
+
   &__years, &__location {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 19px;
     color: var(--primary-dark-gray);
     grid-area: Years;
   }
+
   &__location {
     grid-area: Location;
   }
+
   &_grid {
+    height: 118px;
+    width: auto;
+    position: absolute;
+    top: -118px;
+    left: 0;
     display: grid;
     gap: 0 100px;
-    grid-template-areas: "Years Location"
-    "Name Name";
+    background-color: var(--background-color);
+    padding: 20px;
+    grid-template-areas: "Years"
+    "Name"
+    "Location";
   }
-  &_divider {
-    padding-bottom: 20px;
-    width: 30px;
-    height: 0;
-    border-top: 2px solid var(--text-color);
-  }
+
   &__name {
-    font-size: 60px;
-    line-height: 73px;
+    font-size: 32px;
+    line-height: 100%;
     color: var(--accent-color);
-    padding-top: 32px;
-    padding-bottom: 32px;
-    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
     grid-area: Name;
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      height: 73px;
-      width: 2px;
-      background-color: var(--accent-color);
-      justify-self: center;
-    }
+
   }
+
   &__about {
     font-family: Inter, sans-serif;
     font-weight: 300;
@@ -90,22 +84,147 @@
     color: var(--text-color);
     padding-bottom: 20px;
   }
+
   &__labelContainer {
     padding-top: 32px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
   }
-}
 
-@media (min-width: $breakpoint-l-desktop) {
-  .artist {
-    padding-left: 100px;
+  &__artworks {
+    font-family: Cormorant, sans-serif;
+    padding-left: 20px;
+    padding-top: 60px;
+    font-size: 32px;
+    line-height: 100%;
+    color: var(--accent-color);
   }
 }
 
 @media (min-width: $breakpoint-tablet) {
   .artist {
+    &__info {
+      padding-left: 0;
+      flex-direction: column;
+    }
 
+    &__menu {
+      padding-left: 45px;
+      button > span > span {
+        display: block;
+      }
+    }
+
+    &__img {
+      height: auto;
+      width: 100%;
+    }
+
+    &__description {
+      position: sticky;
+      top: 250px;
+      background: none;
+      width: 100%;
+      height: auto;
+      padding: 20px 20px 0 20px;
+    }
+
+    &__years, &__location {
+      font-size: 16px;
+    }
+
+    &_grid {
+      position: absolute;
+      top: -119px;
+      left: 0;
+      background-color: var(--background-color);
+      gap: 0 174px;
+      width: 560px;
+      height: 119px;
+      padding: 20px;
+      grid-template-areas: "Years Location"
+    "Name Name";
+    }
+
+    &__name {
+      justify-self: start;
+    }
+
+    &__name {
+      font-size: 48px;
+      padding: 0 12px;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 73px;
+        width: 2px;
+        background-color: var(--accent-color);
+        justify-self: center;
+      }
+    }
+
+    &__artworks {
+      font-size: 60px;
+      padding-left: 20px;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-l-desktop) {
+  .artist {
+    padding-left: 100px;
+
+    &__menu {
+      padding-left: 25px;
+      padding-bottom: 20px;
+    }
+
+    &__info {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+
+    &__img {
+      height: 1000px;
+      width: 1000px;
+      object-fit: fill;
+    }
+
+    &__description {
+      width: 604px;
+      height: auto;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: var(--background-color);
+      padding: 80px 60px;
+    }
+
+    &_grid {
+      width: 100%;
+      padding: 0;
+      position: static;
+      background: none;
+      display: grid;
+      gap: 0 100px;
+      grid-template-areas: "Years Location"
+    "Name Name";
+    }
+
+    &_divider {
+      padding-bottom: 20px;
+      width: 30px;
+      height: 0;
+      border-top: 2px solid var(--text-color);
+    }
+
+    &__artworks {
+      padding-top: 160px;
+      padding-left: 80px;
+    }
   }
 }
