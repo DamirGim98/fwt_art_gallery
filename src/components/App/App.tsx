@@ -12,6 +12,7 @@ import {
 } from '../../store/ArtistSlice';
 import Card from '../Card';
 import Loader from '../UI/Loader';
+import ArtistAbout from '../ArtistAbout';
 
 interface CardExcerptProps {
   id: EntityId;
@@ -56,6 +57,7 @@ function App() {
     <>
       <Header />
       {artistsStatus === 'loading' && <Loader />}
+      <ArtistAbout id={'62e148114df711d4f7f68f01'} />
       <CardGrid>{content}</CardGrid>
       <Footer />
     </>

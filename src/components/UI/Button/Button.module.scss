@@ -74,30 +74,36 @@
     position: relative;
     color: var(--primary-dark-gray);
     text-decoration: underline;
-
-    & > svg {
-      margin-right: 12px;
+    svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
       fill: var(--primary-dark-gray);
-    }
-
-    &:hover, &:focus {
-      color: var(--primary-black);
-
-      svg {
-        fill: var(--primary-black);
+      path {
+        fill: var(--primary-dark-gray);
       }
     }
-
+    &:hover, &:focus {
+      color: var(--primary-black);
+      svg {
+        fill: var(--primary-black);
+        path {
+          fill: var(--primary-black);
+        }
+      }
+    }
     &:disabled {
       cursor: default;
       opacity: 0.5;
     }
-
     &.dark {
       color: var(--primary-light-gray);
 
-      & > svg {
+      svg {
         fill: var(--primary-light-gray);
+        path {
+          fill: var(--primary-light-gray);
+        }
       }
 
       &:hover, &:focus {
@@ -105,6 +111,9 @@
 
         svg {
           fill: var(--primary-white);
+          path {
+            fill: var(--primary-white);
+          }
         }
       }
 

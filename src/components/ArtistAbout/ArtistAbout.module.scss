@@ -1,0 +1,111 @@
+@import '../../scss/breakpoints.scss';
+
+
+.artist {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  --text-color: var(--primary-dark-gray);
+  --background-color: var(--primary-white);
+  --accent-color: var(--accent-red);
+  transition: all 0.5s;
+  &.dark {
+    --accent-color: var(--accent-gold);
+    --background-color: var(--primary-black);
+    --text-color: var(--primary-light-gray);
+  }
+
+  &__menu {
+    padding-left: 25px;
+    padding-bottom: 20px;
+
+  }
+  &__info {
+    position: relative;
+    padding-left: 100px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__img {
+    height: 1000px;
+    width: 1000px;
+    object-fit: fill;
+  }
+  &__description {
+    width: 604px;
+    height: 552px;
+    font-family: Cormorant, sans-serif;
+    font-weight: 500;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: var(--background-color);
+    padding: 80px 60px;
+  }
+  &__years, &__location {
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--primary-dark-gray);
+    grid-area: Years;
+  }
+  &__location {
+    grid-area: Location;
+  }
+  &_grid {
+    display: grid;
+    gap: 0 100px;
+    grid-template-areas: "Years Location"
+    "Name Name";
+  }
+  &_divider {
+    padding-bottom: 20px;
+    width: 30px;
+    height: 0;
+    border-top: 2px solid var(--text-color);
+  }
+  &__name {
+    font-size: 60px;
+    line-height: 73px;
+    color: var(--accent-color);
+    padding-top: 32px;
+    padding-bottom: 32px;
+    text-align: center;
+    grid-area: Name;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      height: 73px;
+      width: 2px;
+      background-color: var(--accent-color);
+      justify-self: center;
+    }
+  }
+  &__about {
+    font-family: Inter, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 140%;
+    text-align: justify;
+    color: var(--text-color);
+    padding-bottom: 20px;
+  }
+  &__labelContainer {
+    padding-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+@media (min-width: $breakpoint-l-desktop) {
+  .artist {
+    padding-left: 100px;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .artist {
+
+  }
+}

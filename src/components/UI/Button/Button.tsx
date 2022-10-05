@@ -49,10 +49,10 @@ const Button: FC<IButtonProps> = ({
     <button
       className={cx(
         'button',
-        variant,
         {
           dark: theme,
         },
+        variant,
         `svg-pos-${svgPos}`,
       )}
       disabled={isDisabled}
