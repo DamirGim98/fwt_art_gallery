@@ -5,10 +5,10 @@ import { EntityId, selectArtistById } from '../../store/Slice/ArtistSlice';
 import { useAppSelector } from '../../store/hooks';
 import Button from '../UI/Button';
 import { ReactComponent as LeftArrow } from '../../images/svg/ThinArrowLeft.svg';
-import { ReactComponent as DownArrow } from '../../images/svg/DropdownArrow.svg';
 import { ThemeContext } from '../../context/context';
 import Label from '../UI/Label';
 import { BASE_URL } from '../../Api/API';
+import Accordion from '../UI/Accordeon';
 
 interface ArtistAboutProps {
   id: EntityId;
@@ -36,11 +36,7 @@ const ArtistAbout: FC<ArtistAboutProps> = ({ id }) => {
             <h2 className={cx('artist__name')}>{artist?.name}</h2>
           </div>
           <div className={cx('artist_divider')}></div>
-          <div className={cx('artist__about')}>{artist?.description}</div>
-          <Button variant={'underlined'} svgPos={'right'} theme={isDarkTheme}>
-            <span>Read more</span>
-            <DownArrow />
-          </Button>
+          <Accordion content={artist?.description || ''} />
           <div className={cx('artist__labelContainer')}>
             {artist?.genres.map((genreID) => (
               <Label key={genreID} id={genreID} isActive={false} />

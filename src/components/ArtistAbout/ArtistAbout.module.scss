@@ -40,6 +40,7 @@
   }
 
   &__years, &__location {
+    justify-self: start;
     font-size: 12px;
     line-height: 19px;
     color: var(--primary-dark-gray);
@@ -73,16 +74,6 @@
     padding-bottom: 8px;
     grid-area: Name;
 
-  }
-
-  &__about {
-    font-family: Inter, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 140%;
-    text-align: justify;
-    color: var(--text-color);
-    padding-bottom: 20px;
   }
 
   &__labelContainer {
@@ -153,7 +144,7 @@
 
     &__name {
       font-size: 48px;
-      padding: 0 12px;
+      padding: 0;
       &::before {
         content: '';
         position: absolute;
@@ -163,6 +154,9 @@
         background-color: var(--accent-color);
         justify-self: center;
       }
+    }
+    &__location {
+      justify-self: end;
     }
 
     &__artworks {
@@ -225,6 +219,9 @@
     &__artworks {
       padding-top: 160px;
       padding-left: 80px;
+    }
+    &__location {
+      justify-self: end;
     }
   }
 }
