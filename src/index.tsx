@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
 import './scss/index.scss';
@@ -11,9 +12,11 @@ const Main = () => {
   return (
     <Provider store={store}>
       <ThemeComponent>
-        <Wrapper>
-          <App />
-        </Wrapper>
+        <BrowserRouter>
+          <Wrapper>
+            <App />
+          </Wrapper>
+        </BrowserRouter>
       </ThemeComponent>
     </Provider>
   );

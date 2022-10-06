@@ -1,4 +1,5 @@
 import React, { FC, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import cn from 'classnames/bind';
 import styles from './ArtistAbout.module.scss';
 import { EntityId, selectArtistById } from '../../store/Slice/ArtistSlice';
@@ -15,14 +16,21 @@ interface ArtistAboutProps {
 }
 
 const ArtistAbout: FC<ArtistAboutProps> = ({ id }) => {
+  const navigate = useNavigate();
   const cx = cn.bind(styles);
   const { isDarkTheme } = useContext(ThemeContext);
   const artist = useAppSelector((state) => selectArtistById(state, id));
   const UrlImg = BASE_URL.concat(artist?.mainPainting.image.src || '');
+
   return (
     <div className={cx('artist', { dark: isDarkTheme })}>
       <div className={cx('artist__menu')}>
-        <Button variant={'underlined'} svgPos={'left'} theme={isDarkTheme}>
+        <Button
+          variant={'underlined'}
+          svgPos={'left'}
+          theme={isDarkTheme}
+          onClick={() => navigate(-1)}
+        >
           <span>back</span>
           <LeftArrow />
         </Button>
