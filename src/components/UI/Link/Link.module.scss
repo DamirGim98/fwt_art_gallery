@@ -7,23 +7,14 @@
     line-height: 14px;
     color: var(--primary-dark-gray);
     text-decoration: underline;
-    svg {
-      fill: var(--primary-dark-gray);
-    }
-    &:hover, &:hover > svg {
+    &:hover {
       color: var(--primary-black);
-      fill: var(--primary-black);
     }
   }
 
   &.dark > span {
-    color: var(--primary-light-gray);
-    svg {
-      fill: var(--primary-light-gray);
-    }
-    &:hover, &:hover > svg {
+    &:hover {
       color: var(--primary-white);
-      fill: var(--primary-white);
     }
   }
 }

@@ -7,13 +7,13 @@
   align-items: center;
   justify-content: space-between;
   --icon-color: var(--primary-black);
-
+  &_logo {
+    svg > path {
+        fill: var(--icon-color);
+    }
+  }
   &.dark {
     --icon-color: var(--primary-white);
-  }
-
-  & > svg > path {
-    fill: var(--icon-color);
   }
 
   &__buttons {

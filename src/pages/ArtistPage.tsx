@@ -6,7 +6,7 @@ const ArtistPage = () => {
   const { id } = useParams();
   return (
     <>
-      <ArtistAbout id={id || ''} />;
+      <ArtistAbout id={id || ''} />
     </>
   );
 };

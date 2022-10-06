@@ -1,10 +1,28 @@
 .Icon {
+  --main-color: var(--primary-dark-gray);
+  --hover-color: var(--primary-black);
   display: inline-block;
   align-items: center;
   text-align: center;
-  svg {
+  svg  {
     display: inline-block;
     width: 100%;
     height: max-content;
+    fill: var(--main-color);
+    path {
+      fill: var(--main-color);
+    }
+  }
+  &:hover {
+    svg {
+      fill: var(--hover-color);
+      path {
+        fill: var(--hover-color);
+      }
+    }
+  }
+  &.dark {
+    --main-color: var(--primary-light-gray);
+    --hover-color: var(--primary-white);
   }
 }

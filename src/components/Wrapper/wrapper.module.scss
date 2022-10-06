@@ -1,6 +1,7 @@
 @import '../../scss/breakpoints.scss';
 
 .wrapper {
+  width: 100%;
   display: flex;
   min-height: 100vh;
   box-sizing: border-box;
@@ -14,11 +15,12 @@
 }
 
 .container {
-  width: 1280px;
+  max-width: 1280px;
 }
+
 
 @media (min-width: $breakpoint-l-desktop) {
   .container {
-    width: 1440px;
+    min-width: 1440px;
   }
 }

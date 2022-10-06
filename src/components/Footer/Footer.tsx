@@ -2,10 +2,7 @@ import React, { FC, useContext } from 'react';
 import cn from 'classnames/bind';
 import styles from './Footer.module.scss';
 import { ThemeContext } from '../../context/context';
-import Link from '../UI/Link';
-import { ReactComponent as InstagramIcon } from '../../images/svg/instagram.svg';
-import { ReactComponent as VkIcon } from '../../images/svg/vk.svg';
-import { ReactComponent as FacebookIcon } from '../../images/svg/facebook.svg';
+import { Link, Icon } from '../UI';
 
 const Footer: FC = () => {
   const cx = cn.bind(styles);
@@ -24,13 +21,13 @@ const Footer: FC = () => {
         </div>
         <div className={cx('footer__socials')}>
           <Link>
-            <InstagramIcon />
+            <Icon type={'instagram'} />
           </Link>
           <Link>
-            <VkIcon />
+            <Icon type={'vk'} />
           </Link>
           <Link>
-            <FacebookIcon />
+            <Icon type={'facebook'} />
           </Link>
         </div>
       </div>
