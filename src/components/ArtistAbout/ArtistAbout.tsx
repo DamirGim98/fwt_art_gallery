@@ -4,12 +4,10 @@ import cn from 'classnames/bind';
 import styles from './ArtistAbout.module.scss';
 import { EntityId, selectArtistById } from '../../store/Slice/ArtistSlice';
 import { useAppSelector } from '../../store/hooks';
-import Button from '../UI/Button';
+import { Button, Label, Accordion } from '../UI';
 import { ReactComponent as LeftArrow } from '../../images/svg/ThinArrowLeft.svg';
 import { ThemeContext } from '../../context/context';
-import Label from '../UI/Label';
 import { BASE_URL } from '../../Api/API';
-import Accordion from '../UI/Accordeon';
 
 interface ArtistAboutProps {
   id: EntityId;

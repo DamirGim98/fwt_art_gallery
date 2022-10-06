@@ -9,7 +9,7 @@ import {
   EntityId,
 } from '../store/Slice/ArtistSlice';
 import Card from '../components/Card';
-import Loader from '../components/UI/Loader';
+import { Loader } from '../components/UI';
 import { fetchGenres } from '../store/Slice/GenresSlice';
 
 interface CardExcerptProps {

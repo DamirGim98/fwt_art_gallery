@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { HomePage, ArtistPage } from '../../pages';
-import Layout from '../Layout/Layout';
+import { HomePage, ArtistPage, Layout } from '../../pages';
 
 function App() {
   return (

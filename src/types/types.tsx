@@ -1,5 +1,3 @@
-import { EntityId } from '../store/Slice/ArtistSlice';
-
 export interface ICard {
   id: string | number;
   name: string;

@@ -3,9 +3,8 @@ import cn from 'classnames/bind';
 import { IHeaderProps } from '../../types/types';
 import styles from './Header.module.scss';
 import { ReactComponent as Logo } from '../../images/logo.svg';
-import Button from '../UI/Button';
+import { Button, Hamburger } from '../UI';
 import { ThemeContext } from '../../context/context';
-import Hamburger from '../UI/Hamburger';
 import Menu from '../Menu';
 import useScrollLock from '../../hooks/useScrollLock';
 
