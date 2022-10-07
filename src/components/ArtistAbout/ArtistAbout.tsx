@@ -4,8 +4,7 @@ import cn from 'classnames/bind';
 import styles from './ArtistAbout.module.scss';
 import { EntityId, selectArtistById } from '../../store/Slice/ArtistSlice';
 import { useAppSelector } from '../../store/hooks';
-import { Button, Label, Accordion } from '../UI';
-import { ReactComponent as LeftArrow } from '../../images/svg/ThinArrowLeft.svg';
+import { Button, Label, Accordion, Icon } from '../UI';
 import { ThemeContext } from '../../context/context';
 import { BASE_URL } from '../../Api/API';
 
@@ -24,13 +23,13 @@ const ArtistAbout: FC<ArtistAboutProps> = ({ id }) => {
     <div className={cx('artist', { dark: isDarkTheme })}>
       <div className={cx('artist__menu')}>
         <Button
+          className={cx('artist-nav')}
           variant={'underlined'}
-          svgPos={'left'}
           theme={isDarkTheme}
           onClick={() => navigate(-1)}
         >
           <span>back</span>
-          <LeftArrow />
+          <Icon type={'longArrLeft'} />
         </Button>
       </div>
       <div className={cx('artist__info')}>

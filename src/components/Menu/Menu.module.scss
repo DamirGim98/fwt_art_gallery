@@ -4,16 +4,33 @@
   &__theme {
     display: flex;
     gap: 12px;
-    button:first-of-type {
-      height: 32px;
-      width: 32px;
+  }
+  &-btn > span {
+    height: 32px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 22px;
+  }
+  &-icon {
+    padding: 6px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    &.dark {
+      background-color: var(--secondary-black);
     }
   }
   &__login {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    button > span {
+  }
+  &-auth {
+    width: max-content;
+    span {
       font-family: Cormorant, sans-serif;
       font-weight: 500;
       font-size: 32px;

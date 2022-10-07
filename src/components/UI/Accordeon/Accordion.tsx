@@ -2,7 +2,7 @@ import React, { FC, useContext, useState } from 'react';
 import cn from 'classnames/bind';
 import styles from './Accordion.styles.scss';
 import Button from '../Button';
-import { ReactComponent as DownArrow } from '../../../images/svg/DropdownArrow.svg';
+import Icon from '../Icon';
 import { ThemeContext } from '../../../context/context';
 
 export interface IAccordionProps {
@@ -26,13 +26,13 @@ const Accordion: FC<IAccordionProps> = ({ content }) => {
       <div>
         <Button
           variant={'underlined'}
-          svgPos={'right'}
           theme={isDarkTheme}
           onClick={handleAccordion}
           isDisabled={ButtonAvailable}
+          className={'accordion-button'}
         >
           <span>{isOpen ? 'Read less' : 'Read More'}</span>
-          <DownArrow />
+          <Icon className={cx('accordion-icon', { isOpen })} type={'accordionDown'} />
         </Button>
       </div>
     </div>

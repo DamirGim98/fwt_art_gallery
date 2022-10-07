@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames/bind';
 import { ICard } from '../../types/types';
-import { ReactComponent as Arrow } from '../../images/svg/arrow.svg';
+import { Icon } from '../UI';
 import styles from './Card.module.scss';
 import { ThemeContext } from '../../context/context';
 
@@ -22,7 +22,7 @@ const Card: FC<ICard> = ({ imgUrl, title, name, year, id }) => {
         <div className={cx('card__description_name')}>{name}</div>
         <div className={cx('card__description_year')}>{yearOfLife}</div>
         <div className={cx('card__arrow')}>
-          <Arrow fill={'#DEDEDE'} />
+          <Icon type={'longArrLeft'} className={cx('card-arrow')} />
         </div>
       </div>
     </div>

@@ -15,12 +15,19 @@
     --text-color: var(--primary-light-gray);
   }
 
-  &__menu {
-    padding-left: 45px;
-    padding-bottom: 20px;
-    button > span > span {
-        display: none;
+  &-nav > span {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 16px;
+    span {
+      display: none;
     }
+  }
+
+  &__menu {
+    padding-left: 25px;
+    padding-bottom: 20px;
   }
 
   &__img {
@@ -100,11 +107,14 @@
       flex-direction: column;
     }
 
-    &__menu {
-      padding-left: 45px;
-      button > span > span {
+    &-nav > span {
+      span {
         display: block;
       }
+    }
+
+    &__menu {
+      padding-left: 25px;
     }
 
     &__img {

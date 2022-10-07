@@ -15,22 +15,6 @@
     line-height: 15px;
     text-transform: uppercase;
   }
-  &.svg-pos {
-    &-right {
-      svg {
-        position: absolute;
-        right: -24px;
-        fill: var(--primary-dark-gray);
-      }
-    }
-    &-left {
-      svg {
-        position: absolute;
-        left: -24px;
-        fill: var(--primary-dark-gray);
-      }
-    }
-  }
 
   &.outlined {
     width: 200px;
@@ -74,23 +58,8 @@
     position: relative;
     color: var(--primary-dark-gray);
     text-decoration: underline;
-    svg {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      fill: var(--primary-dark-gray);
-      path {
-        fill: var(--primary-dark-gray);
-      }
-    }
     &:hover, &:focus {
       color: var(--primary-black);
-      svg {
-        fill: var(--primary-black);
-        path {
-          fill: var(--primary-black);
-        }
-      }
     }
     &:disabled {
       cursor: default;
@@ -99,22 +68,8 @@
     &.dark {
       color: var(--primary-light-gray);
 
-      svg {
-        fill: var(--primary-light-gray);
-        path {
-          fill: var(--primary-light-gray);
-        }
-      }
-
       &:hover, &:focus {
         color: var(--primary-white);
-
-        svg {
-          fill: var(--primary-white);
-          path {
-            fill: var(--primary-white);
-          }
-        }
       }
 
       &:disabled {
@@ -131,35 +86,10 @@
   &.delete, &.themeToggle, &.scrollUp {
     padding: 6px;
     border-radius: 4px;
-    & > svg > path {
-      fill: var(--primary-dark-gray);
-    }
     &:disabled {
       cursor: default;
       opacity: 0.5;
       pointer-events: none;
-    }
-    &:hover, &:focus {
-      svg > path {
-        fill: var(--primary-black);
-      }
-    }
-    &.dark {
-      & > svg > path {
-        fill: var(--primary-light-gray);
-      }
-      &:hover, &:focus {
-        svg > path {
-          fill: var(--primary-white);
-        }
-      }
-    }
-  }
-
-  &.themeToggle {
-    &.dark{
-      background: var(--secondary-black);
-      border-radius: 100%;
     }
   }
 
@@ -169,12 +99,5 @@
     width: 60px;
     border: 1px solid var(--primary-light-gray);
     border-radius: 100%;
-    &.dark {
-      background: var(--secondary-black);
-      border: none;
-      &:hover {
-        background: #242222;
-      }
-    }
   }
 }

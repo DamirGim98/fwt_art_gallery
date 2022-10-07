@@ -1,10 +1,7 @@
 import React, { DOMAttributes, FC, ReactNode } from 'react';
 import cn from 'classnames/bind';
 import styles from './Button.module.scss';
-import { ReactComponent as TrashCan } from './assets/trashCan.svg';
-import { ReactComponent as ThemeLight } from './assets/themeIconLight.svg';
-import { ReactComponent as ThemeDark } from './assets/themeIcon.svg';
-import { ReactComponent as ArrowUp } from './assets/arrowUp.svg';
+import Icon from '../Icon';
 
 interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
   /**
@@ -13,13 +10,13 @@ interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
    */
   variant?: 'outlined' | 'underlined' | 'delete' | 'themeToggle' | 'scrollUp' | 'text-btn';
   /**
+   * Allows additional styling.
+   */
+  className?: string;
+  /**
    * Allows dark and light theme, dark theme is considered true value.
    */
   theme?: boolean;
-  /**
-   * If passing SVGs as props define their position
-   */
-  svgPos?: 'left' | 'right';
   /**
    * Disabled property for the button both action and styling.
    */
@@ -35,9 +32,9 @@ interface IButtonProps extends DOMAttributes<HTMLButtonElement> {
 }
 
 const Button: FC<IButtonProps> = ({
+  className,
   variant,
   theme,
-  svgPos = '',
   isDisabled = false,
   children,
   typeButton = 'button',
@@ -49,19 +46,19 @@ const Button: FC<IButtonProps> = ({
     <button
       className={cx(
         'button',
+        className,
         {
           dark: theme,
         },
         variant,
-        `svg-pos-${svgPos}`,
       )}
       disabled={isDisabled}
       type={typeButton}
       {...args}
     >
-      {variant === 'delete' && <TrashCan />}
-      {variant === 'themeToggle' && (theme ? <ThemeDark /> : <ThemeLight />)}
-      {variant === 'scrollUp' && <ArrowUp />}
+      {variant === 'delete' && <Icon type={'trashCan'} />}
+      {variant === 'themeToggle' && <Icon type={theme ? 'themeToggleDark' : 'themeToggleLight'} />}
+      {variant === 'scrollUp' && <Icon type={'arrowUp'} />}
       {optionsWithText.includes(variant || '') && <span>{children}</span>}
     </button>
   );

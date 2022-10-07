@@ -12,4 +12,23 @@
     color: var(--text-color);
     padding-bottom: 20px;
   }
+  &-button > span {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  &-icon {
+    height: 100%;
+    svg {
+      box-sizing: border-box;
+      margin-bottom: 3px;
+    }
+    &.isOpen {
+      svg {
+        margin-top: 3px;
+        margin-bottom: 0;
+        transform: rotateZ(180deg);
+      }
+    }
+  }
 }
