@@ -33,7 +33,14 @@ const ArtistAbout: FC<ArtistAboutProps> = ({ id }) => {
         </Button>
       </div>
       <div className={cx('artist__info')}>
-        <img className={cx('artist__img')} src={UrlImg} alt="artist_main" />
+        <div className={cx('artist-imgWrapper')}>
+          <img className={cx('artist__img')} src={UrlImg} alt="artist_main" />
+          <div className={cx('artist_grid', 'artist_gridInImg')}>
+            <p className={cx('artist__years')}>{artist?.yearsOfLife}</p>
+            <p className={cx('artist__location')}>{artist?.mainPainting.name}</p>
+            <h2 className={cx('artist__name')}>{artist?.name}</h2>
+          </div>
+        </div>
         <div className={cx('artist__description', { dark: isDarkTheme })}>
           <div className={cx('artist_grid')}>
             <p className={cx('artist__years')}>{artist?.yearsOfLife}</p>

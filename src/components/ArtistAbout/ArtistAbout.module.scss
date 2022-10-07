@@ -33,7 +33,7 @@
   &__img {
     width: 100%;
     height: auto;
-    object-fit: fill;
+    object-fit: cover;
   }
 
   &__description {
@@ -43,13 +43,15 @@
     font-family: Cormorant, sans-serif;
     font-weight: 500;
     background: none;
-    padding: 0 20px 0 20px;
+    padding: 20px 20px 0 20px;
   }
 
   &__years, &__location {
+    font-family: Cormorant, sans-serif;
+    font-weight: 500;
     justify-self: start;
     font-size: 12px;
-    line-height: 19px;
+    line-height: 100%;
     color: var(--primary-dark-gray);
     grid-area: Years;
   }
@@ -59,28 +61,15 @@
   }
 
   &_grid {
-    height: 118px;
-    width: auto;
-    position: absolute;
-    top: -118px;
-    left: 0;
-    display: grid;
-    gap: 0 100px;
-    background-color: var(--background-color);
-    padding: 20px;
-    grid-template-areas: "Years"
-    "Name"
-    "Location";
+    width: max-content;
+    display: none;
   }
 
   &__name {
     font-size: 32px;
     line-height: 100%;
     color: var(--accent-color);
-    padding-top: 8px;
-    padding-bottom: 8px;
     grid-area: Name;
-
   }
 
   &__labelContainer {
@@ -88,6 +77,28 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+  }
+
+  &-imgWrapper {
+    position: relative;
+  }
+
+  &_gridInImg {
+    display: grid;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    justify-items: start;
+  }
+  &_grid {
+    width: fit-content;
+    background-color: var(--background-color);
+    gap: 8px 0;
+    height: fit-content;
+    padding: 20px;
+    grid-template-areas: "Years Years"
+      "Name Name"
+      "Location Location";
   }
 
   &__artworks {
@@ -134,39 +145,34 @@
     &__years, &__location {
       font-size: 16px;
     }
-
-    &_grid {
-      position: absolute;
-      top: -119px;
-      left: 0;
-      background-color: var(--background-color);
-      gap: 0 174px;
-      width: 560px;
-      height: 119px;
-      padding: 20px;
-      grid-template-areas: "Years Location"
-    "Name Name";
+    &__location {
+      justify-self: end;
     }
-
     &__name {
-      justify-self: start;
-    }
-
-    &__name {
+      position: relative;
+      height: fit-content;
       font-size: 48px;
-      padding: 0;
       &::before {
         content: '';
         position: absolute;
-        left: 0;
-        height: 73px;
+        left: -20px;
+        height: 100%;
         width: 2px;
         background-color: var(--accent-color);
         justify-self: center;
       }
     }
-    &__location {
-      justify-self: end;
+
+
+    &_gridInImg {
+      justify-items: start;
+    }
+    &_grid {
+        gap: 12px 174px;
+        height: fit-content;
+        padding: 20px;
+      grid-template-areas: "Years Location"
+      "Name Name";
     }
 
     &__artworks {
@@ -196,7 +202,6 @@
     &__img {
       height: 1000px;
       width: 1000px;
-      object-fit: fill;
     }
 
     &__description {
@@ -211,13 +216,11 @@
 
     &_grid {
       width: 100%;
-      padding: 0;
+      padding: 0 0 32px 0;
       position: static;
       background: none;
       display: grid;
-      gap: 0 100px;
-      grid-template-areas: "Years Location"
-    "Name Name";
+      gap: 32px 100px;
     }
 
     &_divider {
@@ -233,6 +236,16 @@
     }
     &__location {
       justify-self: end;
+    }
+
+    &__name {
+      font-size: 60px;
+      &::before {
+        left: -80px;
+      }
+    }
+    &_gridInImg {
+      display: none;
     }
   }
 }
