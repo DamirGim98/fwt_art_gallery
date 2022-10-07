@@ -3,7 +3,7 @@ export interface ICard {
   name: string;
   title?: string;
   year: string;
-  imgUrl: string;
+  imgUrl?: string;
   OnClick?: () => void;
 }
 
@@ -26,6 +26,7 @@ export interface IState {
 export interface IImage {
   _id: string;
   src: string;
+  src2x: string;
   webp: string;
   webp2x: string;
 }

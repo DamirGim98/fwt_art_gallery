@@ -6,7 +6,8 @@ import Link from './Link';
 import TintedBackground from './TintedBackground';
 import Loader from './Loader';
 import Icon from './Icon';
+import Image from './Image';
 
 export type IconType = import('./Icon').IconType;
 
-export { Accordion, Button, Link, Label, Hamburger, TintedBackground, Loader, Icon };
+export { Accordion, Button, Link, Label, Hamburger, TintedBackground, Loader, Icon, Image };

@@ -42,6 +42,8 @@ const artistSlice = createSlice({
 });
 export const selectArtistsStatus = (state: RootState) => state.artist.status;
 
+export const selectArtistMainImage = (state: RootState, id: EntityId) => state.artist.entities[id];
+
 export const { selectById: selectArtistById, selectIds: selectArtistsIds } =
   artistAdapter.getSelectors<RootState>((state) => state.artist);
 
