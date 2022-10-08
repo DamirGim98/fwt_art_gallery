@@ -1,28 +1,25 @@
-import { useState, useEffect, MutableRefObject } from 'react';
+import { useEffect, MutableRefObject } from 'react';
 
-function useLazyLoading(ref: MutableRefObject<HTMLElement | null>, rootMargin = '0px') {
-  const [isIntersecting, setIntersecting] = useState(false);
-
+const useLazyLoading = (
+  ref: MutableRefObject<HTMLElement | null>,
+  cb: () => void,
+  rootMargin = '0px',
+) => {
   useEffect(() => {
+    if (!ref?.current) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIntersecting(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          cb();
+          observer.unobserve(entry.target);
+        }
       },
       {
         rootMargin,
       },
     );
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
-
-  return isIntersecting;
-}
+    observer.observe(ref.current);
+  }, [ref]);
+};
 
 export default useLazyLoading;

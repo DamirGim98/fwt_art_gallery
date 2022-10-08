@@ -1,34 +1,28 @@
-import React, { FC, useEffect, useState, useRef } from 'react';
+import React, { FC, useState, useRef } from 'react';
 import cn from 'classnames/bind';
 import { IImage } from '../../../types/types';
 import { BASE_URL } from '../../../Api/API';
 import useLazyLoading from '../../../hooks/useLazyLoading';
 import styles from './Image.module.scss';
+import Loader from '../Loader';
 
 export interface IImageProps {
   image: IImage;
   className?: string;
-  onLoad?(): void;
 }
 
-const Image: FC<IImageProps> = ({ image, className, onLoad }) => {
+const Image: FC<IImageProps> = ({ image, className }) => {
   const cx = cn.bind(styles);
+  const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const toggleVisible = () => {
+    setIsVisible(!isVisible);
+  };
+
   const imageRef = useRef<HTMLImageElement | null>(null);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
-  const isVisible = useLazyLoading(containerRef);
-
-  useEffect(() => {
-    if (!isVisible || isLoaded) {
-      return;
-    }
-    if (imageRef.current) {
-      imageRef.current.onload = () => {
-        setIsLoaded(true);
-        if (onLoad) onLoad();
-      };
-    }
-  }, [isVisible, isLoaded, onLoad]);
+  useLazyLoading(containerRef, toggleVisible);
 
   return (
     <div ref={containerRef} className={cx('container', className)}>
@@ -49,8 +43,9 @@ const Image: FC<IImageProps> = ({ image, className, onLoad }) => {
           srcSet={`${BASE_URL}${image.src2x}`}
           media={'(min-width: 576px)'}
         />
-        {(isVisible || isLoaded) && (
+        {isVisible && (
           <img
+            onLoad={() => setIsLoaded(!isLoaded)}
             ref={imageRef}
             className={cx('image')}
             src={`${BASE_URL}${image.src}`}
@@ -58,6 +53,7 @@ const Image: FC<IImageProps> = ({ image, className, onLoad }) => {
           />
         )}
       </picture>
+      {!isLoaded && <Loader isInside={true} />}
     </div>
   );
 };
