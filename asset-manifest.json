@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/fwt_art_gallery/static/css/main.db1d5b96.css",
-    "main.js": "/fwt_art_gallery/static/js/main.41727d1c.js",
+    "main.js": "/fwt_art_gallery/static/js/main.337fb0a7.js",
     "static/media/CormorantSC-Bold.ttf": "/fwt_art_gallery/static/media/CormorantSC-Bold.f2a8f11022ccb5c6d961.ttf",
     "static/media/CormorantSC-Medium.ttf": "/fwt_art_gallery/static/media/CormorantSC-Medium.9fa0cf1daac9461e1372.ttf",
     "static/media/Inter-Bold.ttf": "/fwt_art_gallery/static/media/Inter-Bold.88fa7ae373b07b41ecce.ttf",
@@ -9,10 +9,10 @@
     "static/media/Inter-Light.ttf": "/fwt_art_gallery/static/media/Inter-Light.eec8664621fec98efb37.ttf",
     "index.html": "/fwt_art_gallery/index.html",
     "main.db1d5b96.css.map": "/fwt_art_gallery/static/css/main.db1d5b96.css.map",
-    "main.41727d1c.js.map": "/fwt_art_gallery/static/js/main.41727d1c.js.map"
+    "main.337fb0a7.js.map": "/fwt_art_gallery/static/js/main.337fb0a7.js.map"
   },
   "entrypoints": [
     "static/css/main.db1d5b96.css",
-    "static/js/main.41727d1c.js"
+    "static/js/main.337fb0a7.js"
   ]
 }
