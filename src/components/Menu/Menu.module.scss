@@ -1,4 +1,5 @@
 @import '../../scss/breakpoints.scss';
+@import '../../scss';
 
 .menu {
   &__theme {
@@ -31,13 +32,9 @@
   &-auth {
     width: max-content;
     span {
-      font-family: Cormorant, sans-serif;
-      font-weight: 500;
-      font-size: 32px;
-      line-height: 100%;
+      @include cormorant-32-regular;
       @media (min-width: $breakpoint-tablet) {
-        font-size: 60px;
-        line-height: 73px;
+          @include cormorant-60-regular;
       }
     }
 

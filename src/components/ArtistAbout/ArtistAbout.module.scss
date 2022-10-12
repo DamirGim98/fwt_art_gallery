@@ -1,5 +1,5 @@
 @import '../../scss/breakpoints.scss';
-
+@import '../../scss';
 
 .artist {
   display: flex;
@@ -46,11 +46,8 @@
   }
 
   &__years, &__location {
-    font-family: Cormorant, sans-serif;
-    font-weight: 500;
+    @include cormorant-16-regular;
     justify-self: start;
-    font-size: 12px;
-    line-height: 100%;
     color: var(--primary-dark-gray);
     grid-area: Years;
   }

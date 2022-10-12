@@ -1,5 +1,5 @@
-@import '../../scss/breakpoints.scss';
-
+@import '../../scss/breakpoints';
+@import '../../scss';
 
 .header {
   padding: 25px 20px;
@@ -29,11 +29,10 @@
       width: 32px;
     }
 
-    button > span {
-      font-family: Cormorant, sans-serif;
-      font-size: 16px;
-    }
+  }
 
+  &__button > span {
+    @include cormorant-16-bold;
   }
 
   @media (max-width: $breakpoint-s-desktop) {

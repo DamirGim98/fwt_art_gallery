@@ -1,0 +1,34 @@
+@mixin cormorant-16-regular {
+  font-family: Cormorant, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+@mixin inter-16-regular {
+  font-family: Inter, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+@mixin cormorant-16-bold {
+  font-family: Cormorant, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+@mixin cormorant-32-regular {
+  font-family: Cormorant, sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+@mixin cormorant-60-regular {
+  font-family: Cormorant, sans-serif;
+  font-weight: 500;
+  font-size: 60px;
+  line-height: 1.25;
+}

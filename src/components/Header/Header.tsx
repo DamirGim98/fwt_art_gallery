@@ -30,12 +30,27 @@ const Header: FC<IHeaderProps> = ({ user }) => {
           <div className={cx('header__buttons')}>
             {user ? (
               <>
-                <Button variant={'text-btn'} children={'log out'} theme={isDarkTheme} />
+                <Button
+                  className={cx('header__button')}
+                  variant={'text-btn'}
+                  children={'log out'}
+                  theme={isDarkTheme}
+                />
               </>
             ) : (
               <>
-                <Button variant={'text-btn'} children={'log in'} theme={isDarkTheme} />
-                <Button variant={'text-btn'} children={'sign up'} theme={isDarkTheme} />
+                <Button
+                  className={cx('header__button')}
+                  variant={'text-btn'}
+                  children={'log in'}
+                  theme={isDarkTheme}
+                />
+                <Button
+                  className={cx('header__button')}
+                  variant={'text-btn'}
+                  children={'sign up'}
+                  theme={isDarkTheme}
+                />
               </>
             )}
             <Button variant={'themeToggle'} theme={isDarkTheme} onClick={toggleTheme} />
