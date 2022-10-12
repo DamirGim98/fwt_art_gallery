@@ -9,6 +9,8 @@ import Icon from './Icon';
 import Image from './Image';
 import Input from './Input';
 import AuthForm from './AuthForm';
+import Portal from './Portal';
+import Modal from './Modal';
 
 export type IconType = import('./Icon').IconType;
 
@@ -24,4 +26,6 @@ export {
   Image,
   Input,
   AuthForm,
+  Portal,
+  Modal,
 };

@@ -12,6 +12,7 @@ import { ReactComponent as DeleteIcon } from '../assets/icons/deleteTrashIcon.sv
 import { ReactComponent as LongArrLeft } from '../assets/icons/longArrowLeft.svg';
 import { ReactComponent as AccordionDown } from '../assets/icons/accordionDown.svg';
 import { ReactComponent as Error } from '../assets/icons/error.svg';
+import { ReactComponent as Close } from '../assets/icons/closeIcon.svg';
 
 export type IconType =
   | 'facebook'
@@ -25,7 +26,8 @@ export type IconType =
   | 'trashCan'
   | 'longArrLeft'
   | 'accordionDown'
-  | 'error';
+  | 'error'
+  | 'close';
 
 export const iconTypes = new Map([
   ['facebook', <Facebook key={newId()} />],
@@ -40,4 +42,5 @@ export const iconTypes = new Map([
   ['longArrLeft', <LongArrLeft key={newId()} />],
   ['accordionDown', <AccordionDown key={newId()} />],
   ['error', <Error key={newId()} />],
+  ['close', <Close key={newId()} />],
 ]);

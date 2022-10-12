@@ -1,0 +1,29 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(3, 3, 3, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  --modal-color: var(--primary-white);
+  &.dark {
+    --modal-color: var(--modal-color);
+  }
+  &.active {
+    display: flex;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    background-color: var(--modal-color);
+  }
+  &__icon {
+    position: absolute;
+    top: 36px;
+    right: 36px;
+  }
+}
