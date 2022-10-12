@@ -7,7 +7,21 @@ import TintedBackground from './TintedBackground';
 import Loader from './Loader';
 import Icon from './Icon';
 import Image from './Image';
+import Input from './Input';
+import AuthForm from './AuthForm';
 
 export type IconType = import('./Icon').IconType;
 
-export { Accordion, Button, Link, Label, Hamburger, TintedBackground, Loader, Icon, Image };
+export {
+  Accordion,
+  Button,
+  Link,
+  Label,
+  Hamburger,
+  TintedBackground,
+  Loader,
+  Icon,
+  Image,
+  Input,
+  AuthForm,
+};

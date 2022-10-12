@@ -1,0 +1,67 @@
+@import '../../../scss';
+
+.input {
+  position: relative;
+  --label-color: var(--primary-black);
+  --bg-color: var(--primary-white);
+  --border-color: var(--primary-light-gray);
+  --border-color-hover: var(--secondary-gray);
+  --border-color-focus: var(--primary-dark-gray);
+  &.dark {
+    --label-color: var(--primary-white);
+    --bg-color: var(--secondary-black);
+    --border-color: var(--primary-black);
+    --border-color-hover: var(--primary-dark-gray);
+    --border-color-focus: var(--primary-light-gray);
+  }
+  &-input {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    width: 100%;
+
+    @include inter-16-regular;
+    color: var(--primary-dark-gray);
+
+    background: var(--bg-color);
+    outline: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+
+    &:hover {
+      border-color: var(--border-color-hover);
+    }
+
+    &:focus {
+      border-color: var(--border-color-focus);
+    }
+
+    &.input__error {
+      border-color: var(--accent-red);
+    }
+  }
+
+  &-ErrorMessage {
+    display: flex;
+    align-content: center;
+    gap: 8px;
+    @include inter-12-regular;
+    color: var(--accent-error);
+    padding-top: 8px;
+  }
+  &-label {
+    @include inter-12-bold;
+    position: absolute;
+    top: -20px;
+    left: 2px;
+    color: var(--label-color);
+    pointer-events: none;
+  }
+  &-labelRequired {
+    color: var(--primary-dark-gray);
+  }
+  &-icon > svg > path {
+    fill: var(--accent-error);
+  }
+}
