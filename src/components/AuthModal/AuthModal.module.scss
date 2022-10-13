@@ -2,31 +2,105 @@
 @import '../../scss';
 
 .AuthModal {
-  &_Portal {
-    position: absolute;
-    left: 0;
-    top: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  --bg-color: var(--primary-white);
+  --text-color: var(--primary-black);
+
+  &.dark {
+    --bg-color: var(--primary-black);
+    --text-color: var(--primary-white);
   }
+
   &_img {
     display: none;
-    width: 100%;
-    height: auto;
   }
+
+  &_content {
+    overflow-y: auto;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+  }
+
   &_text {
     display: flex;
     flex-direction: column;
     padding: 130px 20px 32px 20px;
     gap: 63px;
   }
+
   &_header {
-    @include cormorant-32-regular;
+    color: var(--text-color);
+    text-align: center;
+    @include cormorant-32-bold;
   }
+
   &_footer {
+    color: var(--text-color);
     @include inter-12-medium;
+    align-self: center;
+    display: flex;
+    width: fit-content;
+    gap: 4px;
   }
+
   &_form {
     display: flex;
     flex-direction: column;
     gap: 60px;
+  }
+
+  &_handleState > span {
+    @include inter-12-medium;
+    text-transform: lowercase;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    &_text {
+      padding-top: 272px;
+    }
+    &_header {
+      font-size: 60px;
+    }
+  }
+  @media (min-width: $breakpoint-s-desktop) {
+    &_img {
+      display: block;
+      width: 50vw;
+      height: auto;
+      object-fit: cover;
+    }
+    &_text {
+      width: 50vw;
+      padding: 132px 86px;
+      gap: 20px;
+    }
+    &_footer {
+      font-size: 16px;
+    }
+    &_form {
+      flex-direction: column-reverse;
+      padding: 0 30px;
+    }
+    &_handleState > span {
+      font-size: 16px;
+    }
+    &_header > {
+      font-size: 48px;
+    }
+  }
+
+  @media (min-width: $breakpoint-l-desktop) {
+    &_content {
+      width: 1028px;
+      height: 700px;
+    }
+    &_text {
+      padding: 132px 50px;
+    }
   }
 }

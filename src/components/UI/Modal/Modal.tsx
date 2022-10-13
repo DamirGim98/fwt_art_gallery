@@ -16,7 +16,7 @@ const Modal: FC<IModalProps> = ({ isActive, setIsActive, className, children }) 
   const { isDarkTheme } = useContext(ThemeContext);
   return (
     <div className={cx('modal', { active: isActive }, { dark: isDarkTheme })} onClick={setIsActive}>
-      <div className={cx('modal__content', className)}>
+      <div className={cx('modal__content', className)} onClick={(event) => event.stopPropagation()}>
         <Icon className={cx('modal__icon')} type={'close'} onClick={setIsActive} />
         {children}
       </div>

@@ -8,9 +8,10 @@ import { useInput } from '../../../hooks/useInput';
 
 interface IFormProps {
   handleClick: (email: string, pass: string) => void;
+  buttonTitle: string;
 }
 
-const AuthForm: FC<IFormProps> = ({ handleClick }) => {
+const AuthForm: FC<IFormProps> = ({ handleClick, buttonTitle }) => {
   const email = useInput('', { checkEmail: true });
   const pass = useInput('', { checkPasswordLength: true });
   const { isDarkTheme } = useContext(ThemeContext);
@@ -35,10 +36,11 @@ const AuthForm: FC<IFormProps> = ({ handleClick }) => {
         onChange={pass.onInputChange}
       />
       <Button
+        className={cx('AuthForm_button')}
         isDisabled={!!email.isError || !!pass.isError}
         variant={'outlined'}
         typeButton={'submit'}
-        children={'Log in'}
+        children={buttonTitle}
         theme={isDarkTheme}
         onClick={() => handleClick(email.value, pass.value)}
       />

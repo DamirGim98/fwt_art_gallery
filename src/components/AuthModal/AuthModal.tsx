@@ -1,33 +1,41 @@
-import React, { FC } from 'react';
-import { AuthForm, Button, Modal, Portal } from '../UI';
+import React, { FC, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import cn from 'classnames/bind';
+import { AuthForm, Button, Modal, Portal } from '../UI';
 import styles from './AuthModal.module.scss';
 import SingImg from '../../assets/images/signInImage.png';
 import RegisterImg from '../../assets/images/registerImage.png';
+import { ThemeContext } from '../../context/context';
 
 export interface IAuthModalProps {
   toggleActive: () => void;
   isActive: boolean;
-  ModalState: 'login' | 'register';
+  isModalLogin?: boolean;
 }
 
-const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, ModalState }) => {
+const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, isModalLogin = true }) => {
   const cx = cn.bind(styles);
-  const AuthHandler = (email: string, pass: string) => {
-    console.log(email, pass);
-  };
-  const isLogin = ModalState === 'login';
+  const navigate = useNavigate();
+
+  const [isLogin, setIsLogin] = useState<boolean>(isModalLogin);
+
+  const { isDarkTheme } = useContext(ThemeContext);
 
   const AuthFooter = [
     "If you don't have an account yet, please",
-    'If you already have an account, please log in',
+    'If you already have an account, please',
   ];
+
+  const AuthHandler = (email: string, pass: string) => {
+    navigate('/');
+    toggleActive();
+  };
 
   return (
     <>
       {isActive && (
-        <Portal className={cx('AuthModal_Portal')} elementFindById={'react-modals'}>
-          <Modal setIsActive={toggleActive} isActive={isActive}>
+        <Portal className={cx('AuthModal', { dark: isDarkTheme })} elementFindById={'react-modals'}>
+          <Modal className={cx('AuthModal_content')} setIsActive={toggleActive} isActive={isActive}>
             <img
               className={cx('AuthModal_img')}
               src={isLogin ? SingImg : RegisterImg}
@@ -38,10 +46,16 @@ const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, ModalState }) 
                 {isLogin ? 'Welcome back' : 'Create your profile'}
               </h2>
               <div className={cx('AuthModal_form')}>
-                <AuthForm handleClick={AuthHandler} />
+                <AuthForm handleClick={AuthHandler} buttonTitle={isLogin ? 'log in' : 'sign up'} />
                 <span className={cx('AuthModal_footer')}>
                   {isLogin ? AuthFooter[0] : AuthFooter[1]}
-                  <Button variant={'underlined'} children={isLogin ? 'Log in' : 'Sing up'} />
+                  <Button
+                    theme={isDarkTheme}
+                    className={cx('AuthModal_handleState')}
+                    variant={'underlined'}
+                    children={isLogin ? 'Sign up' : 'Log in'}
+                    onClick={() => setIsLogin(!isLogin)}
+                  />
                 </span>
               </div>
             </div>
