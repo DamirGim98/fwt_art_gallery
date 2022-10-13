@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 type ValidationTypes = 'checkPasswordLength' | 'checkEmail';
 
 export type Validations = {
-  [K in ValidationTypes]: number | boolean;
+  [K in ValidationTypes]?: number | boolean;
 };
 
 export const useValidation = (value: string, validations: Validations) => {
@@ -14,12 +14,14 @@ export const useValidation = (value: string, validations: Validations) => {
     Object.keys(validations).forEach((validation) => {
       switch (validation) {
         case 'checkEmail':
-          if (reg.test(String(value).toLowerCase())) setIsError('Invalid email');
+          if (!reg.test(String(value).toLowerCase())) setIsError('Invalid email');
+          else setIsError(null);
           break;
         case 'checkPasswordLength':
           if (value.length === 0) setIsError('Password field cannot be empty');
-          if (value.length < 6) setIsError('Password is least 6 characters long');
-          if (value.length > 20) setIsError('Password is max 20 characters long');
+          else if (value.length < 6) setIsError('Password is least 6 characters long');
+          else if (value.length > 25) setIsError('Password is max 20 characters long');
+          else setIsError(null);
           break;
         default:
       }

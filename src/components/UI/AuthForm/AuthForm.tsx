@@ -1,32 +1,20 @@
-import React, { ChangeEvent, FC, useContext, useState } from 'react';
+import React, { FC, useContext } from 'react';
 import cn from 'classnames/bind';
 import styles from './AuthForm.module.scss';
 import Input from '../Input';
 import Button from '../Button';
 import { ThemeContext } from '../../../context/context';
-import { Validate } from '../../../utils/validation';
+import { useInput } from '../../../hooks/useInput';
 
 interface IFormProps {
   handleClick: (email: string, pass: string) => void;
 }
 
 const AuthForm: FC<IFormProps> = ({ handleClick }) => {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-  const [emailError, setEmailError] = useState<null | string>(null);
-  const [passwordError, setPasswordError] = useState<null | string>(null);
+  const email = useInput('', { checkEmail: true });
+  const pass = useInput('', { checkPasswordLength: true });
   const { isDarkTheme } = useContext(ThemeContext);
   const cx = cn.bind(styles);
-
-  const handleEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    Validate(e, setEmailError);
-  };
-
-  const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    setPass(e.target.value);
-    Validate(e, setPasswordError);
-  };
 
   return (
     <div className={cx('AuthForm')}>
@@ -34,25 +22,25 @@ const AuthForm: FC<IFormProps> = ({ handleClick }) => {
         name={'email'}
         label={'Email'}
         type={'email'}
-        value={email}
-        error={emailError}
-        onChange={handleEmail}
+        value={email.value}
+        error={email.value && email.isError}
+        onChange={email.onInputChange}
       />
       <Input
         name={'password'}
         label={'Password'}
         type={'password'}
-        value={pass}
-        error={passwordError}
-        onChange={handlePassword}
+        value={pass.value}
+        error={pass.value && pass.isError}
+        onChange={pass.onInputChange}
       />
       <Button
-        isDisabled={!!emailError || !!passwordError}
+        isDisabled={!!email.isError || !!pass.isError}
         variant={'outlined'}
         typeButton={'submit'}
         children={'Log in'}
         theme={isDarkTheme}
-        onClick={() => handleClick(email, pass)}
+        onClick={() => handleClick(email.value, pass.value)}
       />
     </div>
   );
