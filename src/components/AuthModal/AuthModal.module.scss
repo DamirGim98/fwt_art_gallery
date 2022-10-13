@@ -1,0 +1,32 @@
+@import '../../scss/breakpoints.scss';
+@import '../../scss';
+
+.AuthModal {
+  &_Portal {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &_img {
+    display: none;
+    width: 100%;
+    height: auto;
+  }
+  &_text {
+    display: flex;
+    flex-direction: column;
+    padding: 130px 20px 32px 20px;
+    gap: 63px;
+  }
+  &_header {
+    @include cormorant-32-regular;
+  }
+  &_footer {
+    @include inter-12-medium;
+  }
+  &_form {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+}
