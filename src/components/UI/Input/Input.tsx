@@ -8,7 +8,7 @@ export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   name: string;
   type?: string;
-  error?: string;
+  error?: string | null;
   label?: string;
   isRequired?: boolean;
 }
