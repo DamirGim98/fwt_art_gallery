@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import { IGenre } from '../../types/types';
-import { ArtistAPI } from '../../Api/API';
+import { ArtistAPI } from '../../Api/artists/artistApi';
 
 const genresAdapter = createEntityAdapter<IGenre>({
   selectId: (genre) => genre._id,

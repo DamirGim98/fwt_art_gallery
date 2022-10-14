@@ -1,5 +1,5 @@
 import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import { ArtistAPI } from '../../Api/API';
+import { ArtistAPI } from '../../Api/artists/artistApi';
 import type { IArtist, IState } from '../../types/types';
 import type { RootState } from '../store';
 

@@ -1,7 +1,7 @@
 import React, { FC, useState, useRef } from 'react';
 import cn from 'classnames/bind';
 import { IImage } from '../../../types/types';
-import { BASE_URL } from '../../../Api/API';
+import { BASE_URL } from '../../../Api/instance';
 import useLazyLoading from '../../../hooks/useLazyLoading';
 import styles from './Image.module.scss';
 import Loader from '../Loader';

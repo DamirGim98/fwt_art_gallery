@@ -1,11 +1,5 @@
-import axios from 'axios';
-import type { IArtist, IGenre } from '../types/types';
-
-export const BASE_URL = 'https://internship-front.framework.team';
-
-const instance = axios.create({
-  baseURL: BASE_URL,
-});
+import type { IArtist, IGenre } from '../../types/types';
+import { instance } from '../instance';
 
 export const ArtistAPI = {
   getAllArtists: async () => {
