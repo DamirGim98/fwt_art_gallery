@@ -1,12 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
 import { AuthApi } from '../../Api/auth/authApi';
-import type { IRegisterRequest } from '../../Api/auth/types';
 import type { RootState } from '../store';
 
 export interface IAuthState {
   authData: {
-    fingerprint: string;
     accessToken: string | null;
     isLoading: boolean;
     error: string | null;
@@ -15,7 +13,6 @@ export interface IAuthState {
 
 const initialState: IAuthState = {
   authData: {
-    fingerprint: '',
     accessToken: Cookies.get('accessToken') || null,
     isLoading: false,
     error: null,
@@ -24,7 +21,7 @@ const initialState: IAuthState = {
 
 export const authenticateUser = createAsyncThunk(
   'auth/register',
-  async (params: IRegisterRequest) => {
+  async (params: { username: string; password: string }) => {
     return AuthApi.authorize(params);
   },
 );
@@ -35,9 +32,6 @@ const AuthSlice = createSlice({
   reducers: {
     setNewAccessToken(state, action) {
       state.authData.accessToken = action.payload;
-    },
-    setFingerPrint(state, action) {
-      state.authData.fingerprint = action.payload;
     },
     logout() {
       Cookies.remove('accessToken');
@@ -62,10 +56,8 @@ const AuthSlice = createSlice({
   },
 });
 
-export const { setFingerPrint, setNewAccessToken, logout } = AuthSlice.actions;
+export const { setNewAccessToken, logout } = AuthSlice.actions;
 
 export const selectAccessToken = (state: RootState) => state.auth.authData.accessToken;
-
-export const selectFingerprint = (state: RootState) => state.auth.authData.fingerprint;
 
 export default AuthSlice.reducer;

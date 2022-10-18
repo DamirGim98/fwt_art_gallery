@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
+import Cookies from 'js-cookie';
 import { privateInstance } from '../Api/instance';
 import useRefreshToken from './useRefreshToken';
-import { useAppSelector } from '../store/hooks';
-import { selectAccessToken } from '../store/Slice/AuthSlice';
 
 /* eslint-disable no-param-reassign */
 const useAxiosPrivate = () => {
   const refresh = useRefreshToken();
-  const token = useAppSelector((state) => selectAccessToken(state));
+  const token = Cookies.get('accessToken');
 
   useEffect(() => {
     const requestInterceptor = privateInstance.interceptors.request.use(

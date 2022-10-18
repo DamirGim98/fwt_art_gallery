@@ -5,8 +5,8 @@ import Input from '../Input';
 import Button from '../Button';
 import { ThemeContext } from '../../../context/context';
 import { useInput } from '../../../hooks/useInput';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { authenticateUser, selectFingerprint } from '../../../store/Slice/AuthSlice';
+import { useAppDispatch } from '../../../store/hooks';
+import { authenticateUser } from '../../../store/Slice/AuthSlice';
 
 interface IFormProps {
   buttonTitle: string;
@@ -16,8 +16,6 @@ const AuthForm: FC<IFormProps> = ({ buttonTitle }) => {
   const email = useInput('', { checkEmail: true });
   const pass = useInput('', { checkPasswordLength: true });
 
-  const fingerprint = useAppSelector((state) => selectFingerprint(state));
-
   const dispatch = useAppDispatch();
 
   const { isDarkTheme } = useContext(ThemeContext);
@@ -25,7 +23,7 @@ const AuthForm: FC<IFormProps> = ({ buttonTitle }) => {
   const cx = cn.bind(styles);
 
   const handleAuth = () => {
-    dispatch(authenticateUser({ username: email.value, password: pass.value, fingerprint }));
+    dispatch(authenticateUser({ username: email.value, password: pass.value }));
   };
 
   return (
