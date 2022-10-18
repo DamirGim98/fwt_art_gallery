@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-type ValidationTypes = 'checkPasswordLength' | 'checkEmail';
+type ValidationTypes = 'checkPasswordLength' | 'checkEmail' | 'checkPasswordCase';
 
 export type Validations = {
   [K in ValidationTypes]?: number | boolean;
@@ -8,13 +8,13 @@ export type Validations = {
 
 export const useValidation = (value: string, validations: Validations) => {
   const [isError, setIsError] = useState<null | string>(null);
-  const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   useEffect(() => {
     Object.keys(validations).forEach((validation) => {
       switch (validation) {
         case 'checkEmail':
-          if (!reg.test(String(value).toLowerCase())) setIsError('Invalid email');
+          if (!EMAIL_REGEX.test(String(value).toLowerCase())) setIsError('Invalid email');
           else setIsError(null);
           break;
         case 'checkPasswordLength':

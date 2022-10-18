@@ -1,5 +1,4 @@
 import React, { FC, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import cn from 'classnames/bind';
 import { AuthForm, Button, Modal, Portal } from '../UI';
 import styles from './AuthModal.module.scss';
@@ -15,7 +14,6 @@ export interface IAuthModalProps {
 
 const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, isModalLogin = true }) => {
   const cx = cn.bind(styles);
-  const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState<boolean>(isModalLogin);
 
@@ -25,11 +23,6 @@ const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, isModalLogin =
     "If you don't have an account yet, please",
     'If you already have an account, please',
   ];
-
-  const AuthHandler = (email: string, pass: string) => {
-    navigate('/');
-    toggleActive();
-  };
 
   return (
     <>
@@ -46,7 +39,7 @@ const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, isModalLogin =
                 {isLogin ? 'Welcome back' : 'Create your profile'}
               </h2>
               <div className={cx('AuthModal_form')}>
-                <AuthForm handleClick={AuthHandler} buttonTitle={isLogin ? 'log in' : 'sign up'} />
+                <AuthForm buttonTitle={isLogin ? 'log in' : 'sign up'} />
                 <span className={cx('AuthModal_footer')}>
                   {isLogin ? AuthFooter[0] : AuthFooter[1]}
                   <Button

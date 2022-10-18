@@ -5,17 +5,28 @@ import Input from '../Input';
 import Button from '../Button';
 import { ThemeContext } from '../../../context/context';
 import { useInput } from '../../../hooks/useInput';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { authenticateUser, selectFingerprint } from '../../../store/Slice/AuthSlice';
 
 interface IFormProps {
-  handleClick: (email: string, pass: string) => void;
   buttonTitle: string;
 }
 
-const AuthForm: FC<IFormProps> = ({ handleClick, buttonTitle }) => {
+const AuthForm: FC<IFormProps> = ({ buttonTitle }) => {
   const email = useInput('', { checkEmail: true });
   const pass = useInput('', { checkPasswordLength: true });
+
+  const fingerprint = useAppSelector((state) => selectFingerprint(state));
+
+  const dispatch = useAppDispatch();
+
   const { isDarkTheme } = useContext(ThemeContext);
+
   const cx = cn.bind(styles);
+
+  const handleAuth = () => {
+    dispatch(authenticateUser({ username: email.value, password: pass.value, fingerprint }));
+  };
 
   return (
     <div className={cx('AuthForm')}>
@@ -42,7 +53,7 @@ const AuthForm: FC<IFormProps> = ({ handleClick, buttonTitle }) => {
         typeButton={'submit'}
         children={buttonTitle}
         theme={isDarkTheme}
-        onClick={() => handleClick(email.value, pass.value)}
+        onClick={handleAuth}
       />
     </div>
   );
