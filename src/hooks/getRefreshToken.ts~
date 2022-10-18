@@ -1,0 +1,23 @@
+import Cookies from 'js-cookie';
+import { useAppDispatch } from '../store/hooks';
+import { setNewAccessToken } from '../store/Slice/AuthSlice';
+import { AuthApi } from './auth/authApi';
+
+const getRefreshToken = () => {
+  const token = Cookies.get('refreshToken');
+
+  const refresh = async () => {
+    if (token) {
+      const { accessToken, refreshToken } = await AuthApi.refresh({
+        refreshToken: token,
+      });
+      Cookies.set('accessToken', accessToken);
+      Cookies.set('refreshToken', refreshToken);
+      return accessToken;
+    }
+    return token;
+  };
+  return refresh;
+};
+
+export default getRefreshToken;

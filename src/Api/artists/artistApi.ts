@@ -1,17 +1,17 @@
 import type { IArtist, IGenre } from '../../types/types';
-import { instance } from '../instance';
+import { privateInstance } from '../privateInstance';
 
 export const ArtistAPI = {
   getAllArtists: async () => {
-    const response = await instance.get<IArtist[]>('/artists/static');
+    const response = await privateInstance.get<IArtist[]>('/artists/static');
     return response.data;
   },
   getArtistById: async (id: string) => {
-    const response = await instance.get<IArtist>(`/artists/static/${id}`);
+    const response = await privateInstance.get<IArtist>(`/artists/static/${id}`);
     return response.data;
   },
   getAllGenres: async () => {
-    const response = await instance.get<IGenre[]>('genres/static');
+    const response = await privateInstance.get<IGenre[]>('genres/static');
     return response.data;
   },
 };
