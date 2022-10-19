@@ -1,4 +1,5 @@
 import React, { FC, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CardGrid from '../components/CardGrid';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
@@ -18,6 +19,7 @@ interface CardExcerptProps {
 
 let CardExcerpt: FC<CardExcerptProps> = ({ id }) => {
   const artist = useAppSelector((state) => selectArtistById(state, id));
+  const navigate = useNavigate();
   return (
     <>
       {artist && (
@@ -26,6 +28,7 @@ let CardExcerpt: FC<CardExcerptProps> = ({ id }) => {
           name={artist.name}
           year={artist.yearsOfLife}
           imgUrl={artist.mainPainting.image.src}
+          OnClick={() => navigate(`/artist/${id}`)}
         />
       )}
     </>
