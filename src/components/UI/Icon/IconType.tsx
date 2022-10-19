@@ -13,6 +13,9 @@ import { ReactComponent as LongArrLeft } from '../assets/icons/longArrowLeft.svg
 import { ReactComponent as AccordionDown } from '../assets/icons/accordionDown.svg';
 import { ReactComponent as Error } from '../assets/icons/error.svg';
 import { ReactComponent as Close } from '../assets/icons/closeIcon.svg';
+import { ReactComponent as SliderArrow } from '../assets/icons/SliderArrow.svg';
+import { ReactComponent as CorrectIcon } from '../assets/icons/correct.svg';
+import { ReactComponent as ImageIcon } from '../assets/icons/imageIcon.svg';
 
 export type IconType =
   | 'facebook'
@@ -27,7 +30,10 @@ export type IconType =
   | 'longArrLeft'
   | 'accordionDown'
   | 'error'
-  | 'close';
+  | 'close'
+  | 'sliderArrow'
+  | 'correct'
+  | 'imgIcon';
 
 export const iconTypes = new Map([
   ['facebook', <Facebook key={newId()} />],
@@ -43,4 +49,7 @@ export const iconTypes = new Map([
   ['accordionDown', <AccordionDown key={newId()} />],
   ['error', <Error key={newId()} />],
   ['close', <Close key={newId()} />],
+  ['sliderArrow', <SliderArrow key={newId()} />],
+  ['correct', <CorrectIcon key={newId()} />],
+  ['imgIcon', <ImageIcon key={newId()} />],
 ]);

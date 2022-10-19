@@ -53,3 +53,10 @@ export interface IGenre {
   _id: string;
   name: string;
 }
+
+export interface IArtistPaintings {
+  _id: string;
+  name: string;
+  yearOfCreation: string;
+  image: IImage;
+}
