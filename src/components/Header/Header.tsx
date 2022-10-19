@@ -1,16 +1,21 @@
 import React, { FC, useContext, useState } from 'react';
 import cn from 'classnames/bind';
-import { IHeaderProps } from '../../types/types';
 import styles from './Header.module.scss';
 import { Button, Hamburger, Icon } from '../UI';
 import { ThemeContext } from '../../context/context';
 import useScrollLock from '../../hooks/useScrollLock';
 import AuthModal from '../AuthModal';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { logout, selectIsCredentials } from '../../store/Slice/AuthSlice';
 
 export type ModalType = 'sign_up' | 'log_in';
 
-const Header: FC<IHeaderProps> = ({ user }) => {
+const Header: FC = () => {
   const cx = cn.bind(styles);
+
+  const dispatch = useAppDispatch();
+
+  const isUser = useAppSelector((state) => selectIsCredentials(state));
 
   const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
 
@@ -19,6 +24,10 @@ const Header: FC<IHeaderProps> = ({ user }) => {
   const toggleMenu = () => {
     setIsMenuActive(!isMenuActive);
     toggleScroll();
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
@@ -40,11 +49,13 @@ const Header: FC<IHeaderProps> = ({ user }) => {
   return (
     <>
       <header>
-        <AuthModal
-          toggleActive={() => setIsModalActive(!isModalActive)}
-          isActive={isModalActive}
-          isModalLogin={isModalLogin}
-        />
+        {isModalActive && (
+          <AuthModal
+            toggleActive={() => setIsModalActive(!isModalActive)}
+            isActive={isModalActive}
+            isModalLogin={isModalLogin}
+          />
+        )}
         <div
           className={cx('header-bg', { active: isMenuActive }, { dark: isDarkTheme })}
           onClick={toggleMenu}
@@ -52,13 +63,14 @@ const Header: FC<IHeaderProps> = ({ user }) => {
         <div className={cx('header', { dark: isDarkTheme })}>
           <Icon type={'mainLogo'} className={cx('header_logo')} />
           <div className={cx('header__buttons', { active: isMenuActive }, { dark: isDarkTheme })}>
-            {user ? (
+            {isUser ? (
               <>
                 <Button
                   className={cx('header_login')}
                   variant={'text-btn'}
                   children={'log out'}
                   theme={isDarkTheme}
+                  onClick={() => handleLogout()}
                 />
               </>
             ) : (

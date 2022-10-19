@@ -30,13 +30,12 @@ const AuthSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setNewAccessToken(state, action) {
-      state.authData.accessToken = action.payload;
-    },
-    logout() {
+    logout(state) {
       Cookies.remove('accessToken');
       Cookies.remove('refreshToken');
-      return initialState;
+      state.authData.accessToken = null;
+      state.authData.isLoading = false;
+      state.authData.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -56,7 +55,9 @@ const AuthSlice = createSlice({
   },
 });
 
-export const { setNewAccessToken, logout } = AuthSlice.actions;
+export const { logout } = AuthSlice.actions;
+
+export const selectIsCredentials = (state: RootState) => !!state.auth.authData.accessToken;
 
 export const selectAccessToken = (state: RootState) => state.auth.authData.accessToken;
 

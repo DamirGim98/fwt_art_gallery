@@ -9,10 +9,10 @@ import { ThemeContext } from '../../context/context';
 export interface IAuthModalProps {
   toggleActive: () => void;
   isActive: boolean;
-  isModalLogin?: boolean;
+  isModalLogin: boolean;
 }
 
-const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, isModalLogin = true }) => {
+const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, isModalLogin }) => {
   const cx = cn.bind(styles);
 
   const [isLogin, setIsLogin] = useState<boolean>(isModalLogin);
@@ -25,37 +25,29 @@ const AuthModal: FC<IAuthModalProps> = ({ toggleActive, isActive, isModalLogin =
   ];
 
   return (
-    <>
-      {isActive && (
-        <Portal className={cx('AuthModal', { dark: isDarkTheme })} elementFindById={'react-modals'}>
-          <Modal className={cx('AuthModal_content')} setIsActive={toggleActive} isActive={isActive}>
-            <img
-              className={cx('AuthModal_img')}
-              src={isLogin ? SingImg : RegisterImg}
-              alt="ModalImg"
-            />
-            <div className={cx('AuthModal_text')}>
-              <h2 className={cx('AuthModal_header')}>
-                {isLogin ? 'Welcome back' : 'Create your profile'}
-              </h2>
-              <div className={cx('AuthModal_form')}>
-                <AuthForm buttonTitle={isLogin ? 'log in' : 'sign up'} />
-                <span className={cx('AuthModal_footer')}>
-                  {isLogin ? AuthFooter[0] : AuthFooter[1]}
-                  <Button
-                    theme={isDarkTheme}
-                    className={cx('AuthModal_handleState')}
-                    variant={'underlined'}
-                    children={isLogin ? 'Sign up' : 'Log in'}
-                    onClick={() => setIsLogin(!isLogin)}
-                  />
-                </span>
-              </div>
-            </div>
-          </Modal>
-        </Portal>
-      )}
-    </>
+    <Portal className={cx('AuthModal', { dark: isDarkTheme })} elementFindById={'react-modals'}>
+      <Modal className={cx('AuthModal_content')} setIsActive={toggleActive} isActive={isActive}>
+        <img className={cx('AuthModal_img')} src={isLogin ? SingImg : RegisterImg} alt="ModalImg" />
+        <div className={cx('AuthModal_text')}>
+          <h2 className={cx('AuthModal_header')}>
+            {isLogin ? 'Welcome back' : 'Create your profile'}
+          </h2>
+          <div className={cx('AuthModal_form')}>
+            <AuthForm buttonTitle={isLogin ? 'log in' : 'sign up'} />
+            <span className={cx('AuthModal_footer')}>
+              {isLogin ? AuthFooter[0] : AuthFooter[1]}
+              <Button
+                theme={isDarkTheme}
+                className={cx('AuthModal_handleState')}
+                variant={'underlined'}
+                children={isLogin ? 'Sign up' : 'Log in'}
+                onClick={() => setIsLogin(!isLogin)}
+              />
+            </span>
+          </div>
+        </div>
+      </Modal>
+    </Portal>
   );
 };
 
