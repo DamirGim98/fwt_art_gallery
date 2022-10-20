@@ -1,8 +1,26 @@
 @import '../../scss/text';
 @import '../../scss/breakpoints.scss';
 
+.Portal-slider {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  &-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 100;
+    svg path {
+      fill: var(--primary-light-gray);
+    }
+  }
+}
 
 .slider {
+    height: 100vh;
   --bg-color: var(--primary-white);
   --accent-color: var(--accent-red);
   --text-color: var(--primary-black);
@@ -15,17 +33,14 @@
     --icon-bg: rgba(1,1,1, 0.1);
     --icon-color: var(--primary-light-gray);
   }
-  &-container {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
+  &-slide {
+    -webkit-transform: translateZ(0);
   }
-
   &-button {
+    display: none;
+    z-index: 2;
     width: 100px;
     height: 50%;
-    display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -38,6 +53,7 @@
   }
 
   &-btnIcon {
+    z-index: 2;
     box-sizing: content-box;
     svg path {
       fill: var(--icon-color);
@@ -45,7 +61,7 @@
     &.right {
       transform: rotateZ(180deg);
     }
-    &.correct {
+    &.IconBg {
       height: 16px;
       padding: 6px;
       background-color: var(--icon-bg);
@@ -54,6 +70,7 @@
   }
 
   &-counter {
+    z-index: 2;
     position: absolute;
     right: 20px;
     bottom: 20px;
@@ -62,6 +79,7 @@
   }
 
   &-about-wrapper {
+    z-index: 2;
     display: flex;
     gap: 4px;
     flex-direction: column;
@@ -71,6 +89,7 @@
   }
 
   &-about {
+    z-index: 2;
     display: flex;
     flex-direction: column;
     background-color: var(--bg-color);
@@ -82,18 +101,21 @@
   }
 
   &-text-author {
+    z-index: 2;
     color: var(--text-color);
     @include cormorant-16-bold;
     font-size: 12px;
   }
 
   &-text-year {
+    z-index: 2;
     color: var(--accent-color);
     @include inter-12-bold;
     font-size: 8px;
   }
 
   &-buttons {
+    z-index: 2;
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -103,17 +125,20 @@
   }
 
   &-insideButtons {
+    z-index: 2;
     display: none;
     position: static;
     align-self: flex-end;
   }
   .slider-imgIcon {
+    z-index: 2;
     svg path {
       fill: var(--primary-light-gray);
     }
   }
 
   .slider-imgBtn {
+    z-index: 2;
     position: absolute;
     top: 20px;
     left: 20px;
@@ -130,25 +155,19 @@
   }
 }
 
-.slide {
-  width: 100vw;
-  height: 100vh;
-  padding: 0;
-  position: absolute;
-  opacity: 0;
-  transition: opacity ease-in-out 0.4s;
-}
-
-.active-anim {
-  opacity: 1;
-}
-
 .changeSlide {
   display: none;
 }
 
 @media (min-width: $breakpoint-tablet) {
+  .Portal-slider-close {
+    top: 44px;
+    right: 44px;
+  }
   .slider {
+    &-button {
+      display: flex;
+    }
     &-about {
       left: 40px;
       bottom: 60px;
@@ -200,6 +219,10 @@
 }
 
 @media (min-width: $breakpoint-s-desktop) {
+  .Portal-slider-close {
+    top: 64px;
+    right: 44px;
+  }
   .slider {
     &-counter {
       bottom: 20px;
@@ -215,6 +238,10 @@
 }
 
 @media (min-width: $breakpoint-l-desktop) {
+  .Portal-slider-close {
+    top: 64px;
+    right: 124px;
+  }
   .slider {
     &-counter {
       right: 120px;
