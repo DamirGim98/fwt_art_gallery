@@ -1,0 +1,114 @@
+@import '../../scss/text';
+@import '../../scss/breakpoints.scss';
+
+.Toast-Portal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 101;
+  background: transparent;
+  pointer-events: none;
+}
+
+.Toast {
+  --bg-color: var(--secondary-white);
+  --text-color: var(--primary-dark-gray);
+  &.dark {
+    --bg-color: var(--secondary-black);
+    --text-color: var(--primary-light-gray);
+    outline: none;
+  }
+  position: absolute;
+  bottom: 0;
+  pointer-events: all;
+
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+  padding: 12px;
+  background-color: var(--bg-color);
+  outline: 1px solid var(--primary-light-gray);
+  border-radius: 4px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  &-close {
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    svg {
+      scale: 50%;
+      path {
+        fill: var(--text-color);
+      }
+    }
+  }
+
+  &-error {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: var(--accent-error);
+    @include inter-16-regular;
+    & > span {
+      display: none;
+    }
+  }
+  &-icon {
+    height: 16px;
+    width: 16px;
+    svg path {
+      fill: var(--accent-error);
+    }
+  }
+  &-message {
+    color: var(--text-color);
+    @include inter-12-regular;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .Toast {
+    width: 441px;
+    right: 20px;
+    bottom: 20px;
+    padding: 20px 40px;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 8px;
+      background-color: var(--accent-error);
+    }
+
+    &-error {
+      & > span {
+        display: block;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      left: -24px;
+    }
+
+    &-close {
+      top: 16px;
+      right: 16px;
+      svg {
+        scale: unset;
+      }
+    }
+  }
+  
+}
