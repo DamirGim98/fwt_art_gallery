@@ -1,0 +1,59 @@
+@import '../../scss/breakpoints.scss';
+@import '../../scss';
+
+.DeleteModal {
+  --bg-color: var(--primary-white);
+  --text-color: var(--primary-black);
+
+  &.dark {
+    --bg-color: var(--primary-black);
+    --text-color: var(--primary-white);
+  }
+
+  background-color: var(--bg-color);
+
+  width: 100%;
+  height: fit-content;
+  position: absolute;
+  bottom: 0;
+
+  padding: 20px 33px;
+
+  &-content {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    display: flex;
+    z-index: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &-header {
+    text-align: center;
+    @include inter-16-medium;
+  }
+
+  &-subheader {
+    text-align: center;
+    @include inter-12-regular
+  }
+
+  &-deleteIcon {
+    display: none;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    width: 320px;
+    position: relative;
+    padding: 60px 40px;
+    &-deleteIcon {
+      display: block;
+    }
+    &-content {
+      z-index: unset;
+    }
+  }
+}
+
