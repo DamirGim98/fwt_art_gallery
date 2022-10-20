@@ -1,3 +1,9 @@
+.modal-portal {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -5,15 +11,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100;
   --modal-color: var(--primary-white);
   &.dark {
     --modal-color: var(--modal-color);
-  }
-  &.active {
-    display: flex;
   }
 
   &__content {

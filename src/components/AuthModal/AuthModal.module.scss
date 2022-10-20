@@ -2,12 +2,16 @@
 @import '../../scss';
 
 .AuthModal {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 100;
   --bg-color: var(--primary-white);
   --text-color: var(--primary-black);
+
+  overflow-y: auto;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+
+
 
   &.dark {
     --bg-color: var(--primary-black);
@@ -16,14 +20,6 @@
 
   &_img {
     display: none;
-  }
-
-  &_content {
-    overflow-y: auto;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--bg-color);
   }
 
   &_text {
@@ -89,16 +85,14 @@
     &_handleState > span {
       font-size: 16px;
     }
-    &_header > {
+    &_header {
       font-size: 48px;
     }
   }
 
   @media (min-width: $breakpoint-l-desktop) {
-    &_content {
-      width: 1028px;
-      height: 700px;
-    }
+    width: 1028px;
+    height: 700px;
     &_text {
       padding: 132px 50px;
     }
