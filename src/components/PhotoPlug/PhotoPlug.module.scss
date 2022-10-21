@@ -1,0 +1,68 @@
+@import '../../scss/breakpoints';
+
+.plug {
+  position: relative;
+  --bg-card: var(--secondary-white);
+  --plus-color: var(--accent-red);
+  --outline: var(--primary-light-gray);
+
+  &.dark {
+    --bg-card: var(--secondary-black);
+    --plus-color: var(--accent-gold);
+    --outline: var(--primary-dark-gray);
+  }
+  height: 185px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-card);
+  outline: 1px dashed var(--outline);
+
+  &-plus {
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    background-color: var(--plus-color);
+    bottom: -24px;
+    svg {
+      width: unset;
+      transform: rotate(45deg);
+      path {
+        fill: white;
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    height: 220px;
+  }
+  @media (min-width: $breakpoint-l-desktop) {
+    height: 260px;
+  }
+}
+
+.plug-icon {
+  pointer-events: none;
+  width: 168px;
+  height: 151px;
+
+  svg path {
+    fill: var(--primary-light-gray);
+  }
+
+  svg path:nth-child(3) {
+    fill: var(--primary-dark-gray);
+  }
+
+  &.dark {
+    svg path:nth-child(3) {
+      fill: var(--secondary-black);
+    }
+  }
+}

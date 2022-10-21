@@ -17,6 +17,7 @@ import { ReactComponent as SliderArrow } from '../assets/icons/SliderArrow.svg';
 import { ReactComponent as CorrectIcon } from '../assets/icons/correct.svg';
 import { ReactComponent as ImageIcon } from '../assets/icons/imageIcon.svg';
 import { ReactComponent as BigDeleteIcon } from '../assets/icons/bigTrashcan.svg';
+import { ReactComponent as PhotoPlug } from '../assets/icons/NoImageSvg.svg';
 
 export type IconType =
   | 'facebook'
@@ -35,7 +36,8 @@ export type IconType =
   | 'sliderArrow'
   | 'correct'
   | 'imgIcon'
-  | 'bigTrashCan';
+  | 'bigTrashCan'
+  | 'PhotoPlug';
 
 export const iconTypes = new Map([
   ['facebook', <Facebook key={newId()} />],
@@ -55,4 +57,5 @@ export const iconTypes = new Map([
   ['correct', <CorrectIcon key={newId()} />],
   ['imgIcon', <ImageIcon key={newId()} />],
   ['bigTrashCan', <BigDeleteIcon key={newId()} />],
+  ['PhotoPlug', <PhotoPlug key={newId()} />],
 ]);
