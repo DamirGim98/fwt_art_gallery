@@ -27,7 +27,7 @@ let CardExcerpt: FC<CardExcerptProps> = ({ id }) => {
           id={artist._id}
           name={artist.name}
           year={artist.yearsOfLife}
-          imgUrl={artist.mainPainting.image.src}
+          img={artist.mainPainting.image}
           OnClick={() => navigate(`/artist/${id}`)}
         />
       )}

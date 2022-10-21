@@ -3,7 +3,7 @@ export interface ICard {
   name: string;
   title?: string;
   year: string;
-  imgUrl?: string;
+  img: IImage;
   OnClick?: () => void;
 }
 

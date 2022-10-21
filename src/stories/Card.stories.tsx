@@ -35,7 +35,13 @@ export const ArtistCard = Template.bind({});
 ArtistCard.args = {
   id: 1,
   name: 'Ivan Ivanov',
-  imgUrl: 'https://legacy-time.ru/img/content/shishkin/sosnovyj-bor-1895.jpg',
+  img: {
+    _id: '1aasdadaqvc',
+    src: '',
+    src2x: '',
+    webp: 'https://www.gstatic.com/webp/gallery/1.sm.webp',
+    webp2x: 'https://www.gstatic.com/webp/gallery/1.sm.webp',
+  },
   year: '1998 - 2000',
 };
 ArtistCard.decorators = [withMaxSize];
