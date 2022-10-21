@@ -1,4 +1,4 @@
-import type { IArtist, IGenre } from '../../types/types';
+import type { IArtist, IArtistPaintings, IGenre } from '../../types/types';
 import { privateInstance } from '../privateInstance';
 
 export const ArtistAPI = {
@@ -12,6 +12,10 @@ export const ArtistAPI = {
   },
   getAllGenres: async () => {
     const response = await privateInstance.get<IGenre[]>('genres/static');
+    return response.data;
+  },
+  getAllArtistPaintings: async (id: string) => {
+    const response = await privateInstance.get<IArtistPaintings[]>(`/artist/${id}`);
     return response.data;
   },
 };

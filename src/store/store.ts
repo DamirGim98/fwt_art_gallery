@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { ArtistReducer, GenresReducer, AuthReducer } from './Slice';
+import { ArtistReducer, PaintingReducer, GenresReducer, AuthReducer } from './Slice';
 
 export const store = configureStore({
   reducer: {
     artist: ArtistReducer,
     genres: GenresReducer,
     auth: AuthReducer,
+    paintings: PaintingReducer,
   },
 });
 
