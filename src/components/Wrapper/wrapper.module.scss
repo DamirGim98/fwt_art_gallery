@@ -19,11 +19,12 @@
 }
 
 
-@media (min-width: $breakpoint-l-desktop) {
+@media (min-width: $breakpoint-tablet) {
   .wrapper {
     .container {
       align-self: center;
-      min-width: 1440px;
+      width: 100%;
+      max-width: 1440px;
     }
   }
 
