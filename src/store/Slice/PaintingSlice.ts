@@ -42,8 +42,11 @@ const paintingsSlice = createSlice({
   },
 });
 
-export const { selectById: selectPaintingById, selectIds: selectPaintingsIds } =
-  PaintingsAdapter.getSelectors<RootState>((state) => state.paintings);
+export const {
+  selectById: selectPaintingById,
+  selectIds: selectPaintingsIds,
+  selectAll: selectAllPaintings,
+} = PaintingsAdapter.getSelectors<RootState>((state) => state.paintings);
 
 export const selectPaintingsStatus = (state: RootState) => state.paintings.status;
 

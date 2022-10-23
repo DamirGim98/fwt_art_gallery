@@ -8,11 +8,13 @@
   --text-color: var(--primary-dark-gray);
   --background-color: var(--primary-white);
   --accent-color: var(--accent-red);
+  --no-image-bg: var(--secondary-white);
 
   &.dark {
     --accent-color: var(--accent-gold);
     --background-color: var(--primary-black);
     --text-color: var(--primary-light-gray);
+    --no-image-bg: var(--secondary-black);
   }
 
   &-nav > span {
@@ -28,6 +30,46 @@
   &__menu {
     padding-left: 25px;
     padding-bottom: 20px;
+  }
+
+  &_NoImg {
+    height: 462px;
+    width: 100%;
+    padding-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--no-image-bg);
+
+    & > span {
+      text-align: center;
+      color: var(--secondary-gray);
+      opacity: 0.6;
+      @include inter-16-bold;
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+  }
+
+  &_NoImg_Icon {
+    svg {
+      width: 254px;
+      height: 227px;
+    }
+    padding-bottom: 33px;
+    svg path {
+      fill: var(--primary-light-gray);
+    }
+    svg path:nth-child(3) {
+      fill: var(--primary-dark-gray);
+    }
+    &.dark {
+      svg path:nth-child(3) {
+        fill: var(--secondary-black);
+      }
+    }
   }
 
   &__img {
@@ -128,6 +170,9 @@
       height: 100%;
       width: 100%;
     }
+    &_NoImg {
+      height: 500px;
+    }
 
     &__description {
       position: sticky;
@@ -193,6 +238,12 @@
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
+    }
+
+    &_NoImg {
+      height: 1000px;
+      width: 1000px;
+      justify-content: center;
     }
 
     &__img {
