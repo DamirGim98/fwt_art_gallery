@@ -25,8 +25,7 @@ const genresSlice = createSlice({
   },
 });
 
-export const { selectById: selectGenreById } = genresAdapter.getSelectors<RootState>(
-  (state) => state.genres,
-);
+export const { selectById: selectGenreById, selectAll: selectAllGenres } =
+  genresAdapter.getSelectors<RootState>((state) => state.genres);
 
 export default genresSlice.reducer;

@@ -1,23 +1,21 @@
-import React, { FC, useContext } from 'react';
+import React, { DOMAttributes, FC, useContext } from 'react';
 import cn from 'classnames/bind';
 import styles from './Label.module.scss';
 import { ThemeContext } from '../../../context/context';
-import { useAppSelector } from '../../../store/hooks';
-import { selectGenreById } from '../../../store/Slice/GenresSlice';
+import Icon from '../Icon';
 
 type LabelProps = {
-  id: string | number;
-  isActive: boolean;
-};
+  isActive?: boolean;
+  title: string;
+} & DOMAttributes<HTMLDivElement>;
 
-const Label: FC<LabelProps> = ({ id, isActive }) => {
+const Label: FC<LabelProps> = ({ title, isActive, ...args }) => {
   const cx = cn.bind(styles);
   const { isDarkTheme } = useContext(ThemeContext);
-  const genreObj = useAppSelector((state) => selectGenreById(state, id));
   return (
-    <div className={cx('label', { dark: isDarkTheme })}>
-      <span>{genreObj?.name}</span>
-      {isActive && <button className={cx('label__btn')} type="button"></button>}
+    <div className={cx('label', { dark: isDarkTheme })} {...args}>
+      <span>{title}</span>
+      {isActive && <Icon type={'CloseResize'} className={cx('label__btn')} />}
     </div>
   );
 };

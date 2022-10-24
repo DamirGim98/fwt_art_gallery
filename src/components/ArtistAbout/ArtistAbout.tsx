@@ -5,6 +5,8 @@ import styles from './ArtistAbout.module.scss';
 import { Button, Label, Accordion, Icon, Image } from '../UI';
 import { ThemeContext } from '../../context/context';
 import { IArtist } from '../../types/types';
+import { useAppSelector } from '../../store/hooks';
+import { selectAllGenres } from '../../store/Slice/GenresSlice';
 
 interface ArtistAboutProps {
   artist: IArtist;
@@ -14,6 +16,10 @@ const ArtistAbout: FC<ArtistAboutProps> = ({ artist }) => {
   const navigate = useNavigate();
   const cx = cn.bind(styles);
   const { isDarkTheme } = useContext(ThemeContext);
+
+  const artistGenres = useAppSelector(selectAllGenres).filter((gen) =>
+    artist.genres.includes(gen._id),
+  );
 
   return (
     <div className={cx('artist', { dark: isDarkTheme })}>
@@ -53,8 +59,8 @@ const ArtistAbout: FC<ArtistAboutProps> = ({ artist }) => {
           <div className={cx('artist_divider')}></div>
           <Accordion content={artist?.description || ''} />
           <div className={cx('artist__labelContainer')}>
-            {artist.genres.map((genreID) => (
-              <Label key={genreID} id={genreID} isActive={false} />
+            {artistGenres.map((genre) => (
+              <Label title={genre.name} />
             ))}
           </div>
         </div>
