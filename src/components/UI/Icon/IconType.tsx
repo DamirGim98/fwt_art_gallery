@@ -19,6 +19,7 @@ import { ReactComponent as ImageIcon } from '../assets/icons/imageIcon.svg';
 import { ReactComponent as BigDeleteIcon } from '../assets/icons/bigTrashcan.svg';
 import { ReactComponent as PhotoPlug } from '../assets/icons/NoImageSvg.svg';
 import { ReactComponent as CloseResize } from '../assets/icons/closeResize.svg';
+import { ReactComponent as Profile } from '../assets/icons/Profile.svg';
 
 export type IconType =
   | 'facebook'
@@ -39,7 +40,8 @@ export type IconType =
   | 'imgIcon'
   | 'bigTrashCan'
   | 'PhotoPlug'
-  | 'CloseResize';
+  | 'CloseResize'
+  | 'Profile';
 
 export const iconTypes = new Map([
   ['facebook', <Facebook key={newId()} />],
@@ -61,4 +63,5 @@ export const iconTypes = new Map([
   ['bigTrashCan', <BigDeleteIcon key={newId()} />],
   ['PhotoPlug', <PhotoPlug key={newId()} />],
   ['CloseResize', <CloseResize key={newId()} />],
+  ['Profile', <Profile key={newId()} />],
 ]);
