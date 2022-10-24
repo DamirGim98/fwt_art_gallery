@@ -11,6 +11,7 @@ import Input from './Input';
 import AuthForm from './AuthForm';
 import Portal from './Portal';
 import Modal from './Modal';
+import TextArea from './TextArea';
 
 export type IconType = import('./Icon').IconType;
 
@@ -28,4 +29,5 @@ export {
   AuthForm,
   Portal,
   Modal,
+  TextArea,
 };
