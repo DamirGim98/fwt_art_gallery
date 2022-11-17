@@ -17,7 +17,7 @@
   z-index: 100;
   --modal-color: var(--primary-white);
   &.dark {
-    --modal-color: var(--modal-color);
+    --modal-color: var(--primary-black);
   }
 
   &__content {

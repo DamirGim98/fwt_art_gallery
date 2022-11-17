@@ -12,6 +12,7 @@ import AuthForm from './AuthForm';
 import Portal from './Portal';
 import Modal from './Modal';
 import TextArea from './TextArea';
+import Select from './Select';
 
 export type IconType = import('./Icon').IconType;
 
@@ -30,4 +31,5 @@ export {
   Portal,
   Modal,
   TextArea,
+  Select,
 };

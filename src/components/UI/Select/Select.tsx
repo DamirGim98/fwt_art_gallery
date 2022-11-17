@@ -60,8 +60,8 @@ const Select: FC<SelectProps> = ({ value, onChange, options, label }) => {
           />
         ))}
       </span>
-      <div className={cx('caret', { down: isOpen })}></div>
-      <ul className={cx('options', { show: isOpen })}>
+      <div className={cx('caret', { down: isOpen && options.length })}></div>
+      <ul className={cx('options', { show: isOpen && options.length })}>
         {options.map((option, index) => (
           <li
             onClick={(e) => {

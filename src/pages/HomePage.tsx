@@ -12,6 +12,7 @@ import {
 import Card from '../components/Card';
 import { Loader } from '../components/UI';
 import { fetchGenres } from '../store/Slice/GenresSlice';
+import AddEditModal from '../components/AddEditArtistModal';
 
 interface CardExcerptProps {
   id: EntityId;
@@ -59,6 +60,7 @@ const HomePage = () => {
     <>
       {artistsStatus === 'loading' && <Loader />}
       <CardGrid>{content}</CardGrid>
+      <AddEditModal toggleActive={() => {}} addEditProfile={() => {}} isActive={true} />
     </>
   );
 };
